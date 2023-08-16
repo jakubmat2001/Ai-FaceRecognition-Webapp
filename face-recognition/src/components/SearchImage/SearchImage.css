@@ -1,0 +1,61 @@
+.component {
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
+.info-text{
+    text-align: center;
+    font-weight: bold;
+    
+}
+
+.form{
+    justify-content: center;
+    display: flex;
+}
+
+.form-input {
+    padding: 1em;
+    width: 40%;
+    border-radius: 10px 0% 0% 10px;
+    border: solid black 1px;
+}
+
+.form-button{
+    height: 2.5em;
+    width: 10%;
+    border-radius:0% 10% 10% 0%;
+    border: solid black 1px;
+    border-left: 0px;
+    color: black;
+    font-size: 22px;
+    transition: all 0.5s;
+    cursor: pointer;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-button span {
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .form-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .form-button:hover span {
+    padding-right: 25px;
+  }
+
+  .form-button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }

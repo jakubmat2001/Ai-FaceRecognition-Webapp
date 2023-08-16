@@ -1,0 +1,20 @@
+
+
+.image {
+    width: 225px;
+    height: 225px;
+    padding: 1.5em;
+    margin-left: 1em;
+    /* border-bottom: solid rgba(0, 0, 0) 6px ; */
+    /* border-top: solid rgba(0, 0, 0) 6px ; */
+    border: solid rgba(0, 0, 0) 6px ;
+    border-radius: 1em;
+    /* grabbing border-width and border for transition */
+    transition: border-width, border 0.3s ease-in-out;
+}
+
+.image:hover{
+    /* these 2 properties allow border to slowly  disolve over 0.3s*/
+    border-width: 0px;
+    border: 3px solid rgba(0, 0, 0, 0);
+}

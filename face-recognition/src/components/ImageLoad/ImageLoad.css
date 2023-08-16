@@ -1,0 +1,44 @@
+.container {
+    height: 350px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    /* prevents our image from being invaded by particles background */
+    z-index: 1;
+    position:relative;
+    
+}
+
+.img-facebox-container{
+    position: absolute;
+}
+
+.url-img {
+    border: 2px solid black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10%;
+    height: auto;
+    width: 500px;
+    
+    
+}
+
+.face-box{
+    position: absolute;
+    box-shadow: 0 0 0 3px #18b923 inset;
+    cursor: pointer;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -ms-flex-pack: center;
+    -webkit-box-pack:center;
+    -ms-flex-wrap: wrap;
+    
+}
+
+
+
