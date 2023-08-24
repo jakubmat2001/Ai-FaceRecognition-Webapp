@@ -1,5 +1,4 @@
 import Navigation from './components/Navigation/Navigation';
-import Logo from './components/Logo/Logo';
 import SearchImage from './components/SearchImage/SearchImage';
 import Rank from './components/Rank/Rank';
 import ImageLoad from './components/ImageLoad/ImageLoad';
@@ -128,7 +127,6 @@ class App extends Component {
                 {this.state.route === "home"
                     ?
                     <div>
-                        <Logo />
                         <Rank name={this.state.userProfile.name} entries={this.state.userProfile.entries} />
                         <SearchImage onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
                         <ImageLoad box={this.state.box} imageURL={this.state.imageURL} />

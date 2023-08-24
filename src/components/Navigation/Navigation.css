@@ -1,26 +1,32 @@
+.navigation-signin {
+  width: 100%;
+  display: inline-block;
+}
+
 .navigation {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 1em;
-  }
+  width: 100%;
+  display: inline-flex;
+  justify-content: flex-end;
+}
+
+.buttons-container {
+  float: right;
+
+}
+
+.logo-container {
+  float: left;
+}
 
 .navigation-buttons {
   font-size: 1.5rem;
   color: black;
   transition: 0.25s ease-in-out;
-  padding: 1rem;
+  padding-right: 1rem;
   cursor: pointer;
-  }
+}
 
 .navigation-buttons:hover {
-  color: grey; 
+  color: grey;
   text-decoration: underline;
-  }
-
-
-
-
-
-
-  
-  
+}
