@@ -1,4 +1,5 @@
 import React from "react";
+import './Register.css'
 
 class Register extends React.Component {
     constructor(props) {
@@ -45,29 +46,29 @@ class Register extends React.Component {
         const { onRouteChange } = this.props
         return (
             <div>
-                <article className="br2 ba dark-gray b--black-10 mv4 w-150 w-50-m w-25-l mw5 center">
-                    <main className="pa4 black-80">
-                        <form className="measure center">
-                            <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                                <legend className="f4 fw6 ph0 mh0">Register</legend>
-                                <div className="mt3">
-                                    <label className="db fw6 lh-copy f6" htmlFor="email-address">Name</label>
-                                    <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="text" name="Name" id="Name" onChange={this.onNameChange} />
+                <article className="article-html">
+                    <main className="main-html">
+                        <form className="form-contents">
+                            <fieldset id="sign_up" className="form-grouping">
+                                <legend className="register-label">Register</legend>
+                                <div className="form-div">
+                                    <label className="form-label" htmlFor="name">Name</label>
+                                    <input className="input-properties" type="text" name="Name" id="Name" onChange={this.onNameChange} />
                                 </div>
-                                <div className="mt3">
-                                    <label className="db fw6 lh-copy f6" for="email-address">Email</label>
-                                    <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="email" name="email-address" id="email-address" onChange={this.onEmailChange} />
+                                <div className="form-div">
+                                    <label className="form-label" htmlFor="email-address">Email</label>
+                                    <input className="input-properties" type="email" name="email-address" id="email-address" onChange={this.onEmailChange} />
                                 </div>
-                                <div className="mt3">
-                                    <label className="db fw6 lh-copy f6" for="email-address">Password</label>
-                                    <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" type="password" name="password" id="password" onChange={this.onPasswordChange} />
+                                <div className="form-div">
+                                    <label className="form-label" htmlFor="password">Password</label>
+                                    <input className="input-properties" type="password" name="password" id="password" onChange={this.onPasswordChange} />
                                 </div>
                             </fieldset>
                             <div className="">
-                                <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" onClick={this.onSubmitRegister} type="button" value="Register" />
+                                <input className="register-button" onClick={this.onSubmitRegister} type="button" value="Register" />
                             </div>
-                            <div className="lh-copy mt3">
-                                <p onClick={() => onRouteChange("signin")} className="f6 link dim black db underline-hover pointer">Signin instead.</p>
+                            <div className="signin-instead-container">
+                                <p onClick={() => onRouteChange("signin")} className="signin-instead-button">Signin instead.</p>
                             </div>
                         </form>
                     </main>

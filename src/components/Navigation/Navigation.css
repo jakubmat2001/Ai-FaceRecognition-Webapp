@@ -3,4 +3,24 @@
     justify-content: flex-end;
     margin-right: 1em;
   }
+
+.navigation-buttons {
+  font-size: 1.5rem;
+  color: black;
+  transition: 0.25s ease-in-out;
+  padding: 1rem;
+  cursor: pointer;
+  }
+
+.navigation-buttons:hover {
+  color: grey; 
+  text-decoration: underline;
+  }
+
+
+
+
+
+
+  
   
