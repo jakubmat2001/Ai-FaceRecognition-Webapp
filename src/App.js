@@ -4,7 +4,8 @@ import Rank from './components/Rank/Rank';
 import ImageLoad from './components/ImageLoad/ImageLoad';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
-
+import Account from './components/Account/Account';
+import Password from './components/Password/newPassword';
 import Particles from "react-particles";
 import { Component } from "react";
 import { backgroundOptions, particlesInit } from './particlesOptions';
@@ -80,12 +81,12 @@ class App extends Component {
         // This will then run calculate postion of our Box on that image
         // Then display it on top of the face (if any found)
         fetch("https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/imageurl", {
-                    method: "post",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        input: this.state.input
-                    })
-                })
+            method: "post",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                input: this.state.input
+            })
+        })
             .then(response => response.json())
             .then(result => {
                 this.showFaceBox(this.calculateBoxPosition(result))
@@ -99,7 +100,7 @@ class App extends Component {
                 })
                     .then(response => response.json())
                     .then(count => {
-                        this.setState(Object.assign(this.state.userProfile, {entries: count}))
+                        this.setState(Object.assign(this.state.userProfile, { entries: count }))
                     })
             }).catch(error => console.log("Failed to fetch data: " + error));
     }
@@ -114,6 +115,30 @@ class App extends Component {
         this.setState({ route: route });
     }
 
+    // Improved routing for our app, any existing app routes should be mentioned in here
+    pageRouting() {
+        switch (this.state.route) {
+            case "home":
+                return (
+                    <div>
+                        <Rank name={this.state.userProfile.name} entries={this.state.userProfile.entries} />
+                        <SearchImage onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
+                        <ImageLoad box={this.state.box} imageURL={this.state.imageURL} />
+                    </div>
+                );
+            case "account":
+                return <Account onRouteChange={this.onRouteChange} isSigned={this.state.isSigned}/>;
+            case "password":
+                return <Password onRouteChange={this.onRouteChange} email={this.state.userProfile.email}/>;
+            case "signin":
+                return <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} />;
+            case "register":
+                return <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />;
+            default:
+                return <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} />;
+        }
+    }
+
     // Display appropriate components based on current page/root they're on
     render() {
         return (
@@ -124,22 +149,7 @@ class App extends Component {
                     options={backgroundOptions}
                 />
                 <Navigation onRouteChange={this.onRouteChange} isSigned={this.state.isSigned} />
-                {this.state.route === "home"
-                    ?
-                    <div>
-                        <Rank name={this.state.userProfile.name} entries={this.state.userProfile.entries} />
-                        <SearchImage onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
-                        <ImageLoad box={this.state.box} imageURL={this.state.imageURL} />
-                    </div>
-                    : (
-                        this.state.route === "signin"
-                            ?
-                            <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
-                            :
-                            <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />
-
-                    )
-                }
+                {this.pageRouting()}
             </div>
         );
     }

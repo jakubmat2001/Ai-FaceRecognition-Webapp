@@ -11,7 +11,9 @@ const Navigation = ({ onRouteChange, isSigned }) => {
                 <div className="logo-container">
                     <Logo />
                 </div>
+                
                 <div className="buttons-container">
+                    <p onClick={() => onRouteChange("account")} className="navigation-buttons">Account</p>
                     <p onClick={() => onRouteChange("signout")} className="navigation-buttons">Sing Out</p>
                 </div>
 
