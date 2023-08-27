@@ -10,8 +10,8 @@
 }
 
 .buttons-container {
-  float: right;
-
+  display: flex;
+  justify-content: flex-end;
 }
 
 .logo-container {
@@ -22,7 +22,7 @@
   font-size: 1.5rem;
   color: black;
   transition: 0.25s ease-in-out;
-  padding-right: 1rem;
+  padding-right: 1.7rem;
   cursor: pointer;
 }
 

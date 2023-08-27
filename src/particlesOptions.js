@@ -54,7 +54,7 @@ const backgroundOptions = {
                 enable: true,
                 area: 800,
             },
-            value: 80,
+            value: 65,
         },
         opacity: {
             value: 0.5,
