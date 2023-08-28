@@ -6,6 +6,7 @@ import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
 import Account from './components/Account/Account';
 import Password from './components/Password/newPassword';
+import Delete from './components/Delete/deleteUser';
 import Particles from "react-particles";
 import { Component } from "react";
 import { backgroundOptions, particlesInit } from './particlesOptions';
@@ -130,6 +131,8 @@ class App extends Component {
                 return <Account onRouteChange={this.onRouteChange} isSigned={this.state.isSigned}/>;
             case "password":
                 return <Password onRouteChange={this.onRouteChange} email={this.state.userProfile.email}/>;
+            case "delete":
+                return <Delete onRouteChange={this.onRouteChange} email={this.state.userProfile.email}/>;
             case "signin":
                 return <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} />;
             case "register":

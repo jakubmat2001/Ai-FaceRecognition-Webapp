@@ -40,23 +40,23 @@ class Signin extends React.Component {
 
     render() {
         return (
-            <article className="article-html">
-                <main className="main-html">
-                    <form className="form-contents">
-                        <fieldset id="sign_up" className="form-grouping">
+            <article className="signin-article-html">
+                <main className="signin-main-html">
+                    <form className="signin-form-contents">
+                        <fieldset id="sign_up" className="signin-form-grouping">
                             <legend className="signin-label">Sign In</legend>
-                            <div className="form-div">
-                                <label className="form-label" htmlFor="email-address">Email</label>
+                            <div className="signin-form-div">
+                                <label className="signin-form-label" htmlFor="email-address">Email</label>
                                 <input onChange={this.onEmailChange}
-                                    className="input-properties"
+                                    className="signin-input-properties"
                                     type="email"
                                     name="email-address" id="email-address"
                                 />
                             </div>
-                            <div className="form-div">
-                                <label className="form-label" htmlFor="password">Password</label>
+                            <div className="signin-form-div">
+                                <label className="signin-form-label" htmlFor="password">Password</label>
                                 <input onChange={this.onPasswordChange}
-                                    className="input-properties"
+                                    className="signin-input-properties"
                                     type="password"
                                     name="password"
                                     id="password"

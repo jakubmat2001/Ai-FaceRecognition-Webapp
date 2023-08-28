@@ -1,3 +1,8 @@
+*{
+    z-index: 1;
+    position:relative;
+}
+
 .outter-container {
     width: 35%;
     height: 50%;

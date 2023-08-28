@@ -46,22 +46,22 @@ class Register extends React.Component {
         const { onRouteChange } = this.props
         return (
             <div>
-                <article className="article-html">
-                    <main className="main-html">
-                        <form className="form-contents">
-                            <fieldset id="sign_up" className="form-grouping">
+                <article className="register-article-html">
+                    <main className="register-main-html">
+                        <form className="register-form-contents">
+                            <fieldset id="register" className="register-form-grouping">
                                 <legend className="register-label">Register</legend>
-                                <div className="form-div">
-                                    <label className="form-label" htmlFor="name">Name</label>
-                                    <input className="input-properties" type="text" name="Name" id="Name" onChange={this.onNameChange} />
+                                <div className="register-form-div">
+                                    <label className="register-form-label" htmlFor="name">Name</label>
+                                    <input className="register-input-properties" type="text" name="Name" id="Name" onChange={this.onNameChange} />
                                 </div>
-                                <div className="form-div">
-                                    <label className="form-label" htmlFor="email-address">Email</label>
-                                    <input className="input-properties" type="email" name="email-address" id="email-address" onChange={this.onEmailChange} />
+                                <div className="register-form-div">
+                                    <label className="register-form-label" htmlFor="email-address">Email</label>
+                                    <input className="register-input-properties" type="email" name="email-address" id="email-address" onChange={this.onEmailChange} />
                                 </div>
-                                <div className="form-div">
-                                    <label className="form-label" htmlFor="password">Password</label>
-                                    <input className="input-properties" type="password" name="password" id="password" onChange={this.onPasswordChange} />
+                                <div className="register-form-div">
+                                    <label className="register-form-label" htmlFor="password">Password</label>
+                                    <input className="register-input-properties" type="password" name="password" id="password" onChange={this.onPasswordChange} />
                                 </div>
                             </fieldset>
                             <div className="">

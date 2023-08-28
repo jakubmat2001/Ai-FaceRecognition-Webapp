@@ -30,3 +30,9 @@
   color: grey;
   text-decoration: underline;
 }
+
+/* unique color color for hovering over signout button */
+.navigation-buttons:hover[name="signout"]{
+  color: rgb(210, 63, 63);
+  text-decoration: underline;
+}

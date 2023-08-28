@@ -17,7 +17,7 @@ const backgroundOptions = {
         },
         modes: {
             push: {
-                quantity: 4,
+                quantity: 2,
             },
             repulse: {
                 distance: 200,
@@ -33,7 +33,7 @@ const backgroundOptions = {
             color: "#ffffff",
             distance: 150,
             enable: true,
-            opacity: 0.5,
+            opacity: 0.25,
             width: 1,
         },
         collisions: {
@@ -57,13 +57,13 @@ const backgroundOptions = {
             value: 65,
         },
         opacity: {
-            value: 0.5,
+            value: 0.2,
         },
         shape: {
             type: "circle",
         },
         size: {
-            value: { min: 1, max: 5 },
+            value: { min: 1, max: 4 },
         },
     },
     detectRetina: true,

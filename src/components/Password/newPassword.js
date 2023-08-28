@@ -40,18 +40,21 @@ class Password extends React.Component {
             <article className="password-outter-container">
                 <legend className="password-label">Change Password</legend>
                 <form className="change-pass-form">
+                    <fieldset className="change-pass-fieldset">
+                        <div className="pass-container">
+                            <input className="password-input-form" onChange={this.onPasswordChange} placeholder="password" type="password" name="password" />
+                        </div>
 
-                    <div className="pass-container">
-                        <input className="password-input-form" onChange={this.onPasswordChange} />
-                    </div>
-
-                    <div className="pass-container">
-                        <input className="password-input-form" onChange={this.onNewPasswordChange} />
-                    </div>
-                    
+                        <div className="pass-container">
+                            <input className="password-input-form" onChange={this.onNewPasswordChange} placeholder="new password" type="password" name="new password" />
+                        </div>
+                    </fieldset>
                 </form>
                 <div className="submit-password-container">
-                    <input className="submit-password" onClick={this.onSubmitChangePassword} type="button" value="Change Password" />
+                    <button className="submit-password" onClick={this.onSubmitChangePassword}>Change Password</button>
+                </div>
+                <div className="signin-tag-container">
+                    <p className="signin-tag">Signined as: {`${this.props.email}`}</p>
                 </div>
             </article>
         );

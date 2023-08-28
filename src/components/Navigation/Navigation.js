@@ -13,8 +13,9 @@ const Navigation = ({ onRouteChange, isSigned }) => {
                 </div>
                 
                 <div className="buttons-container">
-                    <p onClick={() => onRouteChange("account")} className="navigation-buttons">Account</p>
-                    <p onClick={() => onRouteChange("signout")} className="navigation-buttons">Sing Out</p>
+                    <p onClick={() => onRouteChange("home")} name="home" className="navigation-buttons">Home</p>
+                    <p onClick={() => onRouteChange("account")} name="account" className="navigation-buttons">Account</p>
+                    <p onClick={() => onRouteChange("signout")} name="signout" className="navigation-buttons">Sing Out</p>
                 </div>
 
                 {console.log("IsSigned is true: " + isSigned)}
