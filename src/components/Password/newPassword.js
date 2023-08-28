@@ -1,4 +1,5 @@
 import React from "react";
+import './newPassword.css'
 
 class Password extends React.Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class Password extends React.Component {
         this.setState({ newPassword: event.target.value })
     }
 
-    
+
     onSubmitChangePassword = () => {
         fetch("https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/password", {
             method: "put",
@@ -33,17 +34,26 @@ class Password extends React.Component {
     }
 
 
+
     render() {
         return (
-            <div>
-                <form>
-                    <input onChange={this.onPasswordChange} />
-                    <input onChange={this.onNewPasswordChange} />
+            <article className="password-outter-container">
+                <legend className="password-label">Change Password</legend>
+                <form className="change-pass-form">
+
+                    <div className="pass-container">
+                        <input className="password-input-form" onChange={this.onPasswordChange} />
+                    </div>
+
+                    <div className="pass-container">
+                        <input className="password-input-form" onChange={this.onNewPasswordChange} />
+                    </div>
+                    
                 </form>
-                <div className="">
+                <div className="submit-password-container">
                     <input className="submit-password" onClick={this.onSubmitChangePassword} type="button" value="Change Password" />
                 </div>
-            </div>
+            </article>
         );
     }
 }

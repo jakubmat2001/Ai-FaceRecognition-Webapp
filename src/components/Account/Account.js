@@ -18,20 +18,14 @@ class Account extends React.Component {
 
     render() {
         return (
-            <article className="article-html">
-                <main className="main-html">
-                    <form className="form-contents">
-                        <fieldset className="form-grouping">
-                            <legend className="options">Account Options</legend>
-                            <div className="form-div">
-                                <p onClick={() => this.props.onRouteChange("password")} className="buttons">Change Password</p>
-                            </div>
-                            <div className="form-div">
-                                <p onClick={() => this.props.onRouteChange("delete")} className="buttons">Delete Account</p>
-                            </div>
-                        </fieldset>
-                    </form>
-                </main>
+            <article className="outter-container">
+                <legend className="user-options">Options</legend>
+                <div className="form-account-button-container">
+                    <button className="form-account-button" onClick={() => this.props.onRouteChange("password")}><span>Change Password</span></button>
+                </div>
+                <div className="form-account-button-container">
+                    <button className="form-account-button" onClick={() => this.props.onRouteChange("delete")}><span>Delete Account</span></button>
+                </div>
             </article>
         )
     }

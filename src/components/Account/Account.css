@@ -1,53 +1,68 @@
-.main-html {
-    padding: 2rem;
-    color: rgba(0, 0, 0, 0.8);
+.outter-container {
+    width: 35%;
+    height: 50%;
+    margin: auto;
+    margin-top: 10%;
+    border: 1px solid grey;
+    border-radius: 20px;
 }
 
-.form-contents {
-    max-width: 35em;
-    margin-left: auto;
-    margin-right: auto;
+.user-options{
+    margin: auto;
+    padding: 20px 0 20px 0;
+    justify-content: center;
+    font-size: large;
+    font-weight: 500;
 }
 
-.form-grouping {
-    border-style: solid;
-    border-width: 0;
-    border-color: transparent;
-    padding-left: 0;
-    padding-bottom: 1rem;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
+.form-account-button-container{
+    width: 50%;
+    height: 90%;
+    margin: auto;
+    margin-bottom: 30px;
+    justify-content: center;
 }
 
-.options {
-    font-size: 1.5rem;
-    font-weight: 600;
-    padding-left: 2.8rem;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-.form-div {
-    margin-top: 0.75rem;
-  }
-
-.buttons {
-    font-size: 0.875rem;
+.form-account-button{
+    height: 2.9em;
+    width: 100%;
+    margin: auto;
     color: black;
-    display: block;
-    line-height: 1.5;
-    margin-top: 0.75rem;
-    margin-left: 2rem;
-    /* changing the direction in which text expands on hover effect */
-    transform-origin: left center;
-    transition: all 0.2s ease-in-out;
+    background-color: transparent;
+    border-radius: 5px;
+    border: solid grey 1px;
+    font-size: small;
+    justify-content: center;
     cursor: pointer;
+    transition: all 0.15s;
 }
 
-.buttons:hover {
-    text-decoration: underline;
-    transform: scale(1.05);
-    cursor: pointer;
+.form-account-button:hover{
+    background-color: white;
+
 }
+
+.form-account-button span {
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    
+  }
+
+  .form-account-button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .form-account-button:hover span {
+    padding-right: 25px;
+  }
+
+  .form-account-button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
