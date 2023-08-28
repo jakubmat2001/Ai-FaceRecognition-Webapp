@@ -29,7 +29,7 @@ class Password extends React.Component {
                 newPassword: this.state.newPassword
             })
         })
-            .then(res => res.json("success"))
+            .then(res => res.json())
     }
 
 

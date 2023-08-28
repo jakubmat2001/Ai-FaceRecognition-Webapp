@@ -1,0 +1,53 @@
+.main-html {
+    padding: 2rem;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.form-contents {
+    max-width: 35em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-grouping {
+    border-style: solid;
+    border-width: 0;
+    border-color: transparent;
+    padding-left: 0;
+    padding-bottom: 1rem;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.options {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-left: 2.8rem;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+.form-div {
+    margin-top: 0.75rem;
+  }
+
+.buttons {
+    font-size: 0.875rem;
+    color: black;
+    display: block;
+    line-height: 1.5;
+    margin-top: 0.75rem;
+    margin-left: 2rem;
+    /* changing the direction in which text expands on hover effect */
+    transform-origin: left center;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.buttons:hover {
+    text-decoration: underline;
+    transform: scale(1.05);
+    cursor: pointer;
+}
