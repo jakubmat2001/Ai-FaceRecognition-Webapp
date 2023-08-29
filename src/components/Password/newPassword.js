@@ -31,6 +31,11 @@ class Password extends React.Component {
             })
         })
             .then(res => res.json())
+            .then(res => {
+                if (res === "success"){
+                    this.props.onRouteChange("signout");
+                }
+            })
     }
 
 
