@@ -6,7 +6,8 @@ class Signin extends React.Component {
         super(props)
         this.state = {
             signInEmail: '',
-            signInPassword: ''
+            signInPassword: '',
+            submissionStatus: '',
         }
     }
 
@@ -17,10 +18,27 @@ class Signin extends React.Component {
         this.setState({ signInPassword: event.target.value })
     }
 
+    onSubmitStatus = (data) => {
+        switch (data) {
+            
+            case "Form":
+                return this.setState({ submissionStatus: "Please fill out all the form fields" })
+            case "Not Found":
+                return this.setState({ submissionStatus: "Failed to find a user" })
+            case "Password Not Matching":
+                return this.setState({ submissionStatus: "Password you provided is incorrect" })
+            case "Not Existing":
+                return this.setState({ submissionStatus: "This user doen't exist on our website" })
+            default:
+                return this.setState({ submissionStatus: "Something went wrong" })
+        }
+    }
+    
+
     // Send a post request to server to check if credentials match
     // If they do, sign in the user to their account
     onSubmitSignIn = () => {
-        fetch("https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/signin", {
+        fetch("http://localhost:3001/signin", {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -33,6 +51,8 @@ class Signin extends React.Component {
                 if (userProfile.id) {
                     this.props.loadUser(userProfile);
                     this.props.onRouteChange('home');
+                } else {
+                    this.onSubmitStatus(userProfile);
                 }
             }
             )
@@ -70,6 +90,10 @@ class Signin extends React.Component {
 
                         <div className="register-instead-container">
                             <p onClick={() => this.props.onRouteChange("register")} className="register-instead-button ">Register instead</p>
+                        </div>
+
+                        <div className="signin-error-msg-container">
+                            <p className="signin-error-msg">{this.state.submissionStatus}</p>
                         </div>
                     </form>
                 </main>

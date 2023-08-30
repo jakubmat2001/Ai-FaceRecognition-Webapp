@@ -126,3 +126,12 @@
     margin: auto;
     justify-content: center;
 }
+
+
+.delete-error-msg-container{
+    display: flex;
+    justify-content: center;
+}
+.delete-error-msg{
+    font-size: small;
+}

@@ -112,3 +112,11 @@
     transform: scale(1.05);
     cursor: pointer;
   }
+
+.signin-error-msg-container{
+    display: flex;
+    justify-content: center;
+}
+.signin-error-msg{
+    font-size: small;
+}

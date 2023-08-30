@@ -7,28 +7,9 @@ class Register extends React.Component {
         this.state = {
             email: '',
             password: '',
-            name: ''
+            name: '',
+            submissionStatus: '',
         }
-    }
-
-    // Send a request to server and pass parameters in body to it
-    onSubmitRegister = () => {
-        fetch("https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/register", {
-            method: "post",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                email: this.state.email,
-                password: this.state.password,
-                name: this.state.name
-            }) 
-        })
-            .then(res => res.json())
-            .then(user => {
-                if (user.id) {
-                    this.props.loadUser(user);
-                    this.props.onRouteChange('signout');
-                }
-            })
     }
 
     onNameChange = (event) => {
@@ -38,8 +19,46 @@ class Register extends React.Component {
     onEmailChange = (event) => {
         this.setState({ email: event.target.value })
     }
+
     onPasswordChange = (event) => {
         this.setState({ password: event.target.value })
+    }
+
+    onSubmitStatus = (data) => {
+        switch (data) {
+            case "Form":
+                return this.setState({ submissionStatus: "Please fill out all the form fields" })
+            case "Failed":
+                return this.setState({ submissionStatus: "Failed to register a user, this e-mail might already exists in our database" })
+            case "Lenght":
+                return this.setState({ submissionStatus: "Password must be at least 6 characters in length" })
+            case "Uppercase":
+                return this.setState({submissionStatus: "Password must start with an uppercase letter"})
+            default:
+                return this.setState({ submissionStatus: "Something went wrong" })
+        }
+    }
+
+    // Send a request to server and pass parameters in body to it
+    onSubmitRegister = () => {
+        fetch("http://localhost:3001/register", {
+            method: "post",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                email: this.state.email,
+                password: this.state.password,
+                name: this.state.name
+            })
+        })
+            .then(res => res.json())
+            .then(user => {
+                if (user.id) {
+                    this.props.loadUser(user);
+                    this.props.onRouteChange('signout');
+                } else {
+                    this.onSubmitStatus(user)
+                }
+            })
     }
 
     render() {
@@ -69,6 +88,9 @@ class Register extends React.Component {
                             </div>
                             <div className="signin-instead-container">
                                 <p onClick={() => onRouteChange("signin")} className="signin-instead-button">Signin instead.</p>
+                            </div>
+                            <div className="register-error-msg-container">
+                                <p className="register-error-msg">{this.state.submissionStatus}</p>
                             </div>
                         </form>
                     </main>

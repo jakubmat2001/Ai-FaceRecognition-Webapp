@@ -114,3 +114,11 @@
   transform: scale(1.05);
   cursor: pointer;
 }
+
+.register-error-msg-container{
+  display: flex;
+  justify-content: center;
+}
+.register-error-msg{
+  font-size: small;
+}

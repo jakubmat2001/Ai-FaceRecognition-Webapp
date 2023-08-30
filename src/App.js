@@ -74,14 +74,14 @@ class App extends Component {
             }
         })
     }
-
+    // https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/
     onButtonSubmit = () => {
         this.setState({ imageURL: this.state.input })
 
         // Fetching prediction made on the image
         // This will then run calculate postion of our Box on that image
         // Then display it on top of the face (if any found)
-        fetch("https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/imageurl", {
+        fetch("http://localhost:3001/imageurl", {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -91,7 +91,7 @@ class App extends Component {
             .then(response => response.json())
             .then(result => {
                 this.showFaceBox(this.calculateBoxPosition(result))
-                fetch("https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/image", {
+                fetch("http://localhost:3001/image", {
                     method: "put",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
