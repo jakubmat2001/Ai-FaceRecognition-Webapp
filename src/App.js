@@ -81,7 +81,7 @@ class App extends Component {
         // Fetching prediction made on the image
         // This will then run calculate postion of our Box on that image
         // Then display it on top of the face (if any found)
-        fetch("https://ai-face-recogn-a1ba577e879b.herokuapp.com/imageurl", {
+        fetch("https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/imageurl", {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -91,7 +91,7 @@ class App extends Component {
             .then(response => response.json())
             .then(result => {
                 this.showFaceBox(this.calculateBoxPosition(result))
-                fetch("https://ai-face-recogn-a1ba577e879b.herokuapp.com/image", {
+                fetch("https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/image", {
                     method: "put",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({

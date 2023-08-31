@@ -47,7 +47,7 @@ class Delete extends React.Component {
 
     onSubmitDeleteAccount = (event) => {
         event.preventDefault();
-        fetch("https://ai-face-recogn-a1ba577e879b.herokuapp.com/delete", {
+        fetch("https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/delete", {
             method: "delete",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

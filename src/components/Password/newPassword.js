@@ -48,7 +48,7 @@ class Password extends React.Component {
 
     onSubmitChangePassword = (event) => {
         event.preventDefault();
-        fetch("https://ai-face-recogn-a1ba577e879b.herokuapp.com/password", {
+        fetch("https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/password", {
             method: "put",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

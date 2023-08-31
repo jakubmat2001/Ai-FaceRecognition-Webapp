@@ -38,7 +38,7 @@ class Signin extends React.Component {
     // Send a post request to server to check if credentials match
     // If they do, sign in the user to their account
     onSubmitSignIn = () => {
-        fetch("https://ai-face-recogn-a1ba577e879b.herokuapp.com/signin", {
+        fetch("https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/signin", {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

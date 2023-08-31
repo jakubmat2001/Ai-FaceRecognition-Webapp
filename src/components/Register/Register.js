@@ -48,7 +48,7 @@ class Register extends React.Component {
 
     // Send a request to server and pass parameters in body to it
     onSubmitRegister = () => {
-        fetch("https://ai-face-recogn-a1ba577e879b.herokuapp.com/register", {
+        fetch("https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/register", {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
