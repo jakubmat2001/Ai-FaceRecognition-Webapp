@@ -28,19 +28,19 @@ class Password extends React.Component {
     onSubmitStatus = (data) => {
         switch (data){
             case "New":
-                return this.setState({ submissionStatus: "Enter your old and new passwords into form"})
+                return this.setState({ submissionStatus: "All fields in form must be filled out"})
             case "Email":
                 return this.setState({ submissionStatus: "Failed to find associated email"})
             case "Length":
                 return this.setState({ submissionStatus: "Password must be at least 6 characters in length"})
             case "Uppercase":
                 return this.setState({ submissionStatus: "Password must start with an uppercase letter"})
+            case "Different":
+                return this.setState({ submissionStatus: "New password must be different from the old"})
+            case "Same":
+                return this.setState({ submissionStatus: "New password's do not match"})
             case "Update":
                 return this.setState({ submissionStatus: "Failed to update password"})
-            case "Same":
-                return this.setState({ submissionStatus: "Please enter different password from the old"})
-            case "Success":
-                return this.setState({ submissionStatus: "Password changed sucessfully"})
             default:
                 return this.setState({ submissionStatus: "Something went wrong"})
         }
@@ -48,7 +48,7 @@ class Password extends React.Component {
 
     onSubmitChangePassword = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3001/password", {
+        fetch("https://ai-face-recogn-a1ba577e879b.herokuapp.com/password", {
             method: "put",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

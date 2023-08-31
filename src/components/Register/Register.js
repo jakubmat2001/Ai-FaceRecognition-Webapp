@@ -7,6 +7,7 @@ class Register extends React.Component {
         this.state = {
             email: '',
             password: '',
+            confirmPassword: '',
             name: '',
             submissionStatus: '',
         }
@@ -24,16 +25,22 @@ class Register extends React.Component {
         this.setState({ password: event.target.value })
     }
 
+    onConfirmPasswordChange = (event) => {
+        this.setState({ confirmPassword: event.target.value })
+    }
+
     onSubmitStatus = (data) => {
         switch (data) {
             case "Form":
-                return this.setState({ submissionStatus: "Please fill out all the form fields" })
+                return this.setState({ submissionStatus: "Please fill out all the fields in form " })
             case "Failed":
                 return this.setState({ submissionStatus: "Failed to register a user, this e-mail might already exists in our database" })
             case "Lenght":
                 return this.setState({ submissionStatus: "Password must be at least 6 characters in length" })
             case "Uppercase":
                 return this.setState({submissionStatus: "Password must start with an uppercase letter"})
+            case "Same":
+                return this.setState({submissionStatus: "Password's do not match"})
             default:
                 return this.setState({ submissionStatus: "Something went wrong" })
         }
@@ -41,12 +48,13 @@ class Register extends React.Component {
 
     // Send a request to server and pass parameters in body to it
     onSubmitRegister = () => {
-        fetch("http://localhost:3001/register", {
+        fetch("https://ai-face-recogn-a1ba577e879b.herokuapp.com/register", {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 email: this.state.email,
                 password: this.state.password,
+                confirmPassword: this.state.confirmPassword,
                 name: this.state.name
             })
         })
@@ -81,6 +89,10 @@ class Register extends React.Component {
                                 <div className="register-form-div">
                                     <label className="register-form-label" htmlFor="password">Password</label>
                                     <input className="register-input-properties" type="password" name="password" id="password" onChange={this.onPasswordChange} />
+                                </div>
+                                <div className="register-form-div">
+                                    <label className="register-form-label" htmlFor="password">Confirm Password</label>
+                                    <input className="register-input-properties" type="password" name="password" id="password" onChange={this.onConfirmPasswordChange} />
                                 </div>
                             </fieldset>
                             <div className="">
