@@ -3,6 +3,7 @@
     width: auto;
     display: flex;
     justify-content: center;
+    margin-bottom: 15%;
     /* prevents our image from being invaded by particles background */
     z-index: 1;
     position:relative;

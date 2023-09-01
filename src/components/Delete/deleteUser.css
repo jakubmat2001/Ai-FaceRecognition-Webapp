@@ -7,6 +7,7 @@
 .delete-account-outter-container {
     width: 60%;
     margin: auto;
+    margin-bottom: 15%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     margin-top: 10%;
