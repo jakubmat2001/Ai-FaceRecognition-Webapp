@@ -1,6 +1,17 @@
-.navigation-signin {
+.navigation-signed {
   width: 100%;
   display: inline-block;
+  position: relative; /* Added this to position the pseudo-element relative to this container */
+}
+
+.navigation-signed::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, transparent, black,  black, transparent );
 }
 
 .navigation {
@@ -19,11 +30,12 @@
 }
 
 .navigation-buttons {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: black;
   transition: 0.25s ease-in-out;
   padding-right: 1.7rem;
   cursor: pointer;
+  justify-content: center;
 }
 
 .navigation-buttons:hover {
@@ -36,3 +48,13 @@
   color: rgb(210, 63, 63);
   text-decoration: underline;
 }
+
+@media only screen and (max-width: 600px) {
+  .navigation-buttons {
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 0;
+    font-size: 1.5rem;
+  }
+}
+

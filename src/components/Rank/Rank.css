@@ -1,7 +1,14 @@
-.Rank-txt{
+.rank-txt{
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.rank-Position{
     text-align: center;
 }
 
-.Rank-Position{
-    text-align: center;
-}
+@media only screen and (max-width: 600px) {
+    .rank-txt {
+      margin-top: 6rem;
+    }
+  }

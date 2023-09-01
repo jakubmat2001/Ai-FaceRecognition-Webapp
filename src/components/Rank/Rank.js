@@ -4,10 +4,10 @@ import './Rank.css'
 const Rank = ({name, entries}) => {
     return(
         <div>
-            <div className="Rank-txt">
+            <div className="rank-txt">
                 {`${name} your rank is... `}
             </div>
-            <div className="Rank-Position">
+            <div className="rank-Position">
                 {`${entries}`}
             </div>
         </div>

@@ -78,11 +78,11 @@ class Delete extends React.Component {
                         </div>
 
                         <div className="delete-account-container">
-                            <input className="delete-input-form" onChange={this.onPasswordChange} placeholder="password" />
+                            <input className="delete-input-form" onChange={this.onPasswordChange} placeholder="password" type="password"/>
                         </div>
 
                         <div className="delete-account-container">
-                            <input className="delete-input-form" onChange={this.onPasswordConfirmChange} placeholder="confirm password" />
+                            <input className="delete-input-form" onChange={this.onPasswordConfirmChange} placeholder="confirm password" type="password" />
                         </div>
 
                         <div className="delete-account-button-container">
@@ -96,7 +96,7 @@ class Delete extends React.Component {
                     <div className="disclaimer-label-container">
                         <p className="disclaimer-account-label">Disclaimer</p>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p className="delete-disclaimer-text">By deleting your account, you will erase all your data from our database including any past entry streaks you had. This is <b>permanent</b> and you will be able to create a new account with the same e-mail you're using for this account if you wish. </p>
                 </div>
             </article>
         );

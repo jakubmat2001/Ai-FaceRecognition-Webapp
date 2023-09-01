@@ -1,73 +1,96 @@
-*{
-    z-index: 1;
-    position:relative;
+* {
+  z-index: 1;
+  position: relative;
 }
 
 .outter-container {
-    width: 35%;
-    height: 50%;
-    margin: auto;
-    margin-top: 10%;
-    border: 1px solid grey;
-    border-radius: 20px;
+  width: 35%;
+  height: 50%;
+  margin: auto;
+  margin-top: 10%;
+  border: 1px solid grey;
+  border-radius: 20px;
 }
 
-.user-options{
-    margin: auto;
-    padding: 20px 0 20px 0;
-    justify-content: center;
-    font-size: large;
-    font-weight: 500;
+.user-options {
+  margin: auto;
+  padding: 20px 0 20px 0;
+  justify-content: center;
+  font-size: large;
+  font-weight: 500;
 }
 
-.form-account-button-container{
-    width: 50%;
-    height: 90%;
-    margin: auto;
-    margin-bottom: 30px;
-    justify-content: center;
+.form-account-button-container {
+  width: 50%;
+  height: 90%;
+  margin: auto;
+  margin-bottom: 30px;
+  justify-content: center;
 }
 
-.form-account-button{
-    height: 2.9em;
-    width: 100%;
-    margin: auto;
-    color: black;
-    background-color: transparent;
-    border-radius: 5px;
-    border: solid grey 1px;
-    font-size: small;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.15s;
+.form-account-button {
+  height: 2.9em;
+  width: 100%;
+  margin: auto;
+  color: black;
+  background-color: transparent;
+  border-radius: 5px;
+  border: solid grey 1px;
+  font-size: small;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
 }
 
-.form-account-button:hover{
-    background-color: white;
-
+.form-account-button:hover {
+  background-color: white;
 }
 
 .form-account-button span {
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-    
-  }
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
 
-  .form-account-button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-  }
-  
-  .form-account-button:hover span {
-    padding-right: 25px;
-  }
+}
 
-  .form-account-button:hover span:after {
-    opacity: 1;
-    right: 0;
+.form-account-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.form-account-button:hover span {
+  padding-right: 25px;
+}
+
+.form-account-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+@media only screen and (min-width: 0px) {
+  .outter-container {
+    width: 70%;
   }
+}
+
+@media only screen and (max-width: 600px) {
+  .outter-container {
+    margin-top: 50%;
+  }
+}
+
+@media only screen and (min-width: 650px) {
+  .outter-container {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .outter-container {
+    width: 40%;
+  }
+}

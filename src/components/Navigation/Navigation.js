@@ -7,7 +7,7 @@ const Navigation = ({ onRouteChange, isSigned }) => {
     if (isSigned) {
         // If user is signed in, show signout buttons and send end-user to Signin route once clicked on
         return (
-            <nav className="navigation-signin">
+            <nav className="navigation-signed">
                 <div className="logo-container">
                     <Logo />
                 </div>
