@@ -9,10 +9,24 @@ import Password from './components/Password/newPassword';
 import Delete from './components/Delete/deleteUser';
 import Particles from "react-particles";
 import { Component } from "react";
+import { connect } from 'react-redux';
+import { actionImageFormInput } from './redux-actions';
 import { backgroundOptions, particlesInit } from './particlesOptions';
 
+const mapStateToProps = state => {
+    return {
+        imageFormInput: state.reducerImageFormInput.imageFormInput
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onInputChange: (event) => dispatch(actionImageFormInput(event.target.value))
+    }
+}
+
 const userInitialState = {
-    input: '',
+    // imageFormInput: '',
     imageURL: 'https://png.pngitem.com/pimgs/s/623-6236346_person-icon-png-download-person-illustration-transparent-png.png',
     box: {},
     route: "signin",
@@ -27,6 +41,9 @@ const userInitialState = {
     }
 };
 
+
+
+
 class App extends Component {
     constructor() {
         super();
@@ -34,9 +51,9 @@ class App extends Component {
     }
 
     // Receive and log input from SearchImage input box to console
-    onInputChange = (event) => {
-        this.setState({ input: event.target.value })
-    }
+    // onInputChange = (event) => {
+    //     this.setState({ imageFormInput: event.target.value })
+    // }
 
     calculateBoxPosition = (data) => {
         const clarifaiFaceBoxOutput = data.outputs[0].data.regions[0].region_info.bounding_box
@@ -76,7 +93,8 @@ class App extends Component {
     }
     // https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/
     onButtonSubmit = () => {
-        this.setState({ imageURL: this.state.input })
+        const {imageFormInput} = this.props;
+        this.setState({ imageURL: imageFormInput })
 
         // Fetching prediction made on the image
         // This will then run calculate postion of our Box on that image
@@ -85,7 +103,7 @@ class App extends Component {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                input: this.state.input
+                imageFormInput: imageFormInput
             })
         })
             .then(response => response.json())
@@ -117,13 +135,13 @@ class App extends Component {
     }
 
     // Improved routing for our app, any existing app routes should be mentioned in here
-    pageRouting() {
+    pageRouting(onInputChange) {
         switch (this.state.route) {
             case "home":
                 return (
                     <div>
                         <Rank name={this.state.userProfile.name} entries={this.state.userProfile.entries} />
-                        <SearchImage onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
+                        <SearchImage onInputChange={onInputChange} onButtonSubmit={this.onButtonSubmit} />
                         <ImageLoad box={this.state.box} imageURL={this.state.imageURL} />
                     </div>
                 );
@@ -144,7 +162,9 @@ class App extends Component {
 
     // Display appropriate components based on current page/root they're on
     render() {
+        const { onInputChange} = this.props;
         return (
+            
             <div className='App'>
                 <Particles
                     id='tsparticles'
@@ -152,10 +172,10 @@ class App extends Component {
                     options={backgroundOptions}
                 />
                 <Navigation onRouteChange={this.onRouteChange} isSigned={this.state.isSigned} />
-                {this.pageRouting()}
+                {this.pageRouting(onInputChange)}
             </div>
         );
     }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
