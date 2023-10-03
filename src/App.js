@@ -11,8 +11,9 @@ import Particles from "react-particles";
 import { Component } from "react";
 import { backgroundOptions, particlesInit } from './particlesOptions';
 
+
 const userInitialState = {
-    input: '',
+    imageFormInput: '',
     imageURL: 'https://png.pngitem.com/pimgs/s/623-6236346_person-icon-png-download-person-illustration-transparent-png.png',
     box: {},
     route: "signin",
@@ -27,6 +28,7 @@ const userInitialState = {
     }
 };
 
+
 class App extends Component {
     constructor() {
         super();
@@ -35,7 +37,7 @@ class App extends Component {
 
     // Receive and log input from SearchImage input box to console
     onInputChange = (event) => {
-        this.setState({ input: event.target.value })
+        this.setState({ imageFormInput: event.target.value })
     }
 
     calculateBoxPosition = (data) => {
@@ -76,22 +78,24 @@ class App extends Component {
     }
     // https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/
     onButtonSubmit = () => {
-        this.setState({ imageURL: this.state.input })
+        // const {imageFormInput} = this.props;
+
+        this.setState({ imageURL: this.imageFormInput })
 
         // Fetching prediction made on the image
         // This will then run calculate postion of our Box on that image
         // Then display it on top of the face (if any found)
-        fetch("https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/imageurl", {
+        fetch("http://localhost:3001/imageurl", {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                input: this.state.input
+                imageFormInput: this.imageFormInput
             })
         })
             .then(response => response.json())
             .then(result => {
                 this.showFaceBox(this.calculateBoxPosition(result))
-                fetch("https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/image", {
+                fetch("http://localhost:3001/image", {
                     method: "put",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
@@ -145,6 +149,7 @@ class App extends Component {
     // Display appropriate components based on current page/root they're on
     render() {
         return (
+            
             <div className='App'>
                 <Particles
                     id='tsparticles'
