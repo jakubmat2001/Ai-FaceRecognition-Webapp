@@ -91,8 +91,8 @@ class Register extends React.Component {
                                     <input className="register-input-properties" type="password" name="password" id="password" onChange={this.onPasswordChange} />
                                 </div>
                                 <div className="register-form-div">
-                                    <label className="register-form-label" htmlFor="password">Confirm Password</label>
-                                    <input className="register-input-properties" type="password" name="password" id="password" onChange={this.onConfirmPasswordChange} />
+                                    <label className="register-form-label" htmlFor="conf-password">Confirm Password</label>
+                                    <input className="register-input-properties" type="password" name="confirm-password" id="conf-password" onChange={this.onConfirmPasswordChange} />
                                 </div>
                             </fieldset>
                             <div className="">
