@@ -80,7 +80,7 @@ class App extends Component {
     onButtonSubmit = () => {
         // const {imageFormInput} = this.props;
 
-        this.setState({ imageURL: this.imageFormInput })
+        this.setState({ imageURL: this.state.imageFormInput })
 
         // Fetching prediction made on the image
         // This will then run calculate postion of our Box on that image
@@ -89,7 +89,7 @@ class App extends Component {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                imageFormInput: this.imageFormInput
+                input: this.state.imageFormInput
             })
         })
             .then(response => response.json())
