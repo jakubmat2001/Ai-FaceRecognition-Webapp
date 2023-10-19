@@ -13,14 +13,12 @@
     margin-top: 10%;
     border: 1px solid grey;
     border-radius: 20px;
-
 }
 
 .delete-account-form {
     width:100%;
     margin-right: auto;
     grid-column: span 1;
-
 }
 
 .disclaimer-container {
@@ -62,6 +60,7 @@
 
 .delete-account-label {
     margin: auto;
+    text-align: center;
     padding: 20px 0 20px 0;
     justify-content: center;
     font-size: large;
