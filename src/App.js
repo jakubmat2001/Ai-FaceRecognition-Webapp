@@ -7,6 +7,8 @@ import Register from './components/Register/Register';
 import Account from './components/Account/Account';
 import Password from './components/Password/newPassword';
 import Delete from './components/Delete/deleteUser';
+import Profile from './components/Profile/Profile';
+import Modal from './components/Modal/Modal'
 import Particles from "react-particles";
 import { Component } from "react";
 import { backgroundOptions, particlesInit } from './particlesOptions';
@@ -16,8 +18,9 @@ const userInitialState = {
     imageFormInput: '',
     imageURL: 'https://png.pngitem.com/pimgs/s/623-6236346_person-icon-png-download-person-illustration-transparent-png.png',
     box: {},
-    route: "signin",
-    isSigned: false,
+    route: "home",
+    isSigned: true,
+    isProfileOpen: false,
     userProfile: {
         id: "",
         name: "",
@@ -126,6 +129,7 @@ class App extends Component {
             case "home":
                 return (
                     <div>
+                        <Modal />
                         <Rank name={this.state.userProfile.name} entries={this.state.userProfile.entries} />
                         <SearchImage onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
                         <ImageLoad box={this.state.box} imageURL={this.state.imageURL} />
@@ -146,6 +150,13 @@ class App extends Component {
         }
     }
 
+        toggleModal = () => {
+            this.setState(prevState => ({
+                isProfileOpen: !this.state.isProfileOpen
+            }))
+
+        }
+
     // Display appropriate components based on current page/root they're on
     render() {
         return (
@@ -157,6 +168,11 @@ class App extends Component {
                     options={backgroundOptions}
                 />
                 <Navigation onRouteChange={this.onRouteChange} isSigned={this.state.isSigned} />
+                {this.state.isProfileOpen && 
+                <Modal>
+                    <Profile isProfileOpen={this.state.isProfileOpen} toggleModal={this.toggleModal}/>
+                </Modal>
+                }
                 {this.pageRouting()}
             </div>
         );
