@@ -8,17 +8,6 @@
   position: relative; /* Added this to position the pseudo-element relative to this container */
 }
 
-.navigation-signed::before {
-  content: "";
-  margin-top: 10px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 1px;
-  width: 100%;
-  background: linear-gradient(to right, transparent, black,  black, transparent );
-}
-
 .navigation {
   width: 100%;
   display: inline-flex;
@@ -52,12 +41,6 @@
 
 .navigation-buttons:hover {
   color: grey;
-  text-decoration: underline;
-}
-
-/* unique color color for hovering over signout button */
-.navigation-buttons:hover[name="signout"]{
-  color: rgb(210, 63, 63);
   text-decoration: underline;
 }
 

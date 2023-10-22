@@ -1,33 +1,26 @@
 import React from "react";
+import defaultProfileIcon from "../Profile-Icon/img/defaultProfileIcon.png"
 import "./Profile.css"
 
 const Profile = ({ isProfileOpen, toggleModal }) => {
 
     return (
         <div className="profile-container">
-            <article className="register-article-html">
-                <main className="register-main-html">
-                    <form className="register-form-contents">
-                        <fieldset id="register" className="register-form-grouping">
-                            <legend className="register-label">Register</legend>
-                            <div className="register-form-div">
-                                <label className="register-form-label" htmlFor="name">Name</label>
-                                <input className="register-input-properties" type="text" name="Name" id="Name" />
-                            </div>
-                            <div className="register-form-div">
-                                <label className="register-form-label" htmlFor="email-address">Email</label>
-                                <input className="register-input-properties" type="email" name="email-address" id="email-address" />
-                            </div>
-                            <div className="register-form-div">
-                                <label className="register-form-label" htmlFor="password">Password</label>
-                                <input className="register-input-properties" type="password" name="password" id="password" />
-                            </div>
-                            <div className="register-form-div">
-                                <label className="register-form-label" htmlFor="conf-password">Confirm Password</label>
-                                <input className="register-input-properties" type="password" name="confirm-password" id="conf-password" />
+            <article className="profile-article-html">
+                <main className="profile-main-html">
+                    <form className="profile-form-contents">
+                        <fieldset id="profile" className="profile-form-grouping">
+                            <img className="profile-img" src={defaultProfileIcon}></img>
+                            <legend className="profile-label">Profile</legend>
+                            <div className="profile-form-div">
+                                <label className="profile-form-label" htmlFor="name">Name</label>
+                                <input className="profile-input-properties" type="text" name="Name" id="Name" />
                             </div>
                         </fieldset>
-                        <button onClick={toggleModal}> Click</button>
+                        <div>
+                            <button className="save-changes" onClick={toggleModal}>Save Changes</button>
+                            <button className="cancel-changes" onClick={toggleModal}>Cancel</button>
+                        </div>
                     </form>
                 </main>
             </article>

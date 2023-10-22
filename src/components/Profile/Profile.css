@@ -2,7 +2,7 @@
     z-index: 999;
     width: 100%;
     height: 100%;
-    background-color:rgb(255, 255, 255, 0.94);
+    background-color: rgb(255, 255, 255, 0.6);
     top: 0;
     bottom: 0;
     border: 1px solid black;
@@ -10,4 +10,91 @@
     position: fixed;
     align-items: center;
     justify-content: center;
+}
+
+
+.profile-article-html {
+    border-radius: 0.5rem;
+    border: 1px solid darkgray;
+    margin-top: 2rem;
+    width: 30%;
+    height: 80%;
+    margin: auto;
+    background-color: white;
+}
+
+.profile-main-html {
+    padding: 2rem;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.profile-form-contents {
+    max-width: 30em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profile-form-grouping {
+    border-style: solid;
+    border-width: 0;
+    border-color: transparent;
+    padding-left: 0;
+    padding-bottom: 1rem;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.profile-label {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding-right: 0;
+    padding-top: 10px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.profile-form-div {
+    margin-top: 0.75rem;
+}
+
+.profile-form-label {
+    display: block;
+    font-weight: 600;
+    line-height: 1.5;
+    font-size: 0.875rem;
+}
+
+.profile-input-properties {
+    padding: 0.6rem;
+    border: 1px solid;
+    border-color: grey;
+    background-color: transparent;
+}
+
+/* shorter way of setting width for individual input field */
+.profile-input-properties {
+    width: 100%;
+}
+
+.save-changes {
+    float: left;
+    border: 1px solid gray;
+}
+
+.save-changes:hover{
+    background-color: grey;
+    color: white;
+}
+
+.cancel-changes {
+    float: right;
+    border: 1px solid grey;
+}
+
+.cancel-changes:hover{
+    background-color: rgb(222, 106, 106);
+    color: white;
 }
