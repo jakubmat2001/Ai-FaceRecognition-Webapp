@@ -27,7 +27,7 @@ class ProfileIcon extends React.Component {
                         <img className="profile-img" src={defaultProfileIcon} alt="profile-Icon" />
                     </DropdownToggle>
                     <DropdownMenu>
-                        <DropdownItem> View Profile </DropdownItem>
+                        <DropdownItem onClick={this.props.toggleModal}> View Profile </DropdownItem>
                         <DropdownItem> Change Password </DropdownItem>
                         <DropdownItem> Delete Account </DropdownItem>
                         <DropdownItem onClick={() => this.props.onRouteChange("signout")}> Sign-Out </DropdownItem>

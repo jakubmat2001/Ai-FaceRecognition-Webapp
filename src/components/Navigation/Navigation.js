@@ -4,7 +4,7 @@ import ProfileIcon from "../Profile-Icon/Profile-Icon";
 import './Navigation.css';
 
 
-const Navigation = ({ onRouteChange, isSigned }) => {
+const Navigation = ({ onRouteChange, isSigned, toggleModal}) => {
     if (isSigned) {
         // If user is signed in, show signout buttons and send end-user to Signin route once clicked on
         return (
@@ -14,7 +14,7 @@ const Navigation = ({ onRouteChange, isSigned }) => {
                 </div>
                 
                 <div className="buttons-container">
-                    <ProfileIcon onRouteChange={onRouteChange}/>
+                    <ProfileIcon onRouteChange={onRouteChange} toggleModal={toggleModal}/>
                 </div>
                 
 

@@ -20,7 +20,7 @@ const userInitialState = {
     box: {},
     route: "home",
     isSigned: true,
-    isProfileOpen: false,
+    isProfileOpen: true,
     userProfile: {
         id: "",
         name: "",
@@ -30,7 +30,6 @@ const userInitialState = {
         joined: ""
     }
 };
-
 
 class App extends Component {
     constructor() {
@@ -129,7 +128,6 @@ class App extends Component {
             case "home":
                 return (
                     <div>
-                        <Modal />
                         <Rank name={this.state.userProfile.name} entries={this.state.userProfile.entries} />
                         <SearchImage onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
                         <ImageLoad box={this.state.box} imageURL={this.state.imageURL} />
@@ -152,7 +150,7 @@ class App extends Component {
 
         toggleModal = () => {
             this.setState(prevState => ({
-                isProfileOpen: !this.state.isProfileOpen
+                isProfileOpen: !prevState.isProfileOpen
             }))
 
         }
@@ -167,12 +165,13 @@ class App extends Component {
                     init={particlesInit}
                     options={backgroundOptions}
                 />
-                <Navigation onRouteChange={this.onRouteChange} isSigned={this.state.isSigned} />
                 {this.state.isProfileOpen && 
                 <Modal>
                     <Profile isProfileOpen={this.state.isProfileOpen} toggleModal={this.toggleModal}/>
+                    {console.log(this.state.isProfileOpen)}
                 </Modal>
                 }
+                <Navigation onRouteChange={this.onRouteChange} isSigned={this.state.isSigned} toggleModal={this.toggleModal} />
                 {this.pageRouting()}
             </div>
         );
