@@ -18,9 +18,9 @@ const userInitialState = {
     imageFormInput: '',
     imageURL: 'https://png.pngitem.com/pimgs/s/623-6236346_person-icon-png-download-person-illustration-transparent-png.png',
     box: {},
-    route: "home",
-    isSigned: true,
-    isProfileOpen: true,
+    route: "signin",
+    isSigned: false,
+    isProfileOpen: false,
     userProfile: {
         id: "",
         name: "",
@@ -167,7 +167,7 @@ class App extends Component {
                 />
                 {this.state.isProfileOpen && 
                 <Modal>
-                    <Profile isProfileOpen={this.state.isProfileOpen} toggleModal={this.toggleModal}/>
+                    <Profile isProfileOpen={this.state.isProfileOpen} usersName={this.state.userProfile.name} usersEntries={this.state.userProfile.entries} toggleModal={this.toggleModal}/>
                     {console.log(this.state.isProfileOpen)}
                 </Modal>
                 }

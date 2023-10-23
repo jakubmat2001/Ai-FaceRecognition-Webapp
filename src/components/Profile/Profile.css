@@ -5,7 +5,6 @@
     background-color: rgb(255, 255, 255, 0.6);
     top: 0;
     bottom: 0;
-    border: 1px solid black;
     display: flex;
     position: fixed;
     align-items: center;
@@ -21,6 +20,8 @@
     height: 80%;
     margin: auto;
     background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
+
 }
 
 .profile-main-html {
@@ -45,6 +46,10 @@
     margin-right: 0;
 }
 
+.top-profile-container {
+    display: flex;
+}
+
 .profile-label {
     display: flex;
     justify-content: center;
@@ -54,6 +59,13 @@
     padding-top: 10px;
     margin-left: 0;
     margin-right: 0;
+}
+
+.profile-exit {
+    width: 50px;
+    height:100%;
+    margin: auto;
+    cursor: pointer;
 }
 
 .profile-form-div {
