@@ -102,7 +102,6 @@ class App extends Component {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         id: this.state.userProfile.id
-
                     })
                 })
                     .then(response => response.json())
@@ -167,7 +166,7 @@ class App extends Component {
                 />
                 {this.state.isProfileOpen && 
                 <Modal>
-                    <Profile isProfileOpen={this.state.isProfileOpen} usersName={this.state.userProfile.name} usersEntries={this.state.userProfile.entries} toggleModal={this.toggleModal}/>
+                    <Profile isProfileOpen={this.state.isProfileOpen} user={this.state.userProfile} toggleModal={this.toggleModal} loadUser={this.loadUser}/>
                     {console.log(this.state.isProfileOpen)}
                 </Modal>
                 }
