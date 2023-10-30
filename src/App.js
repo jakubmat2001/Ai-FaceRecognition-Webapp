@@ -37,6 +37,39 @@ class App extends Component {
         this.state = userInitialState;
     }
 
+    componentDidMount() {
+        const token = window.sessionStorage.getItem('token');
+        if (token) {
+            fetch("http://localhost:3001/signin", {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": token
+                }
+            })
+                .then(resp => resp.json())
+                .then(data => {
+                    if (data && data.id) {
+                        fetch(`http://localhost:3001/profile/${data.id}`, {
+                            method: "get",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Authorization": token
+                            }
+                        })
+                        .then(res => res.json())
+                        .then(user => {
+                            if (user && user.email){
+                                this.loadUser(user);
+                                this.onRouteChange("home");
+                            }
+                        })
+                    }
+                })
+                .catch(console.log)
+        }
+    }
+
     // Receive and log input from SearchImage input box to console
     onInputChange = (event) => {
         this.setState({ imageFormInput: event.target.value })
@@ -78,6 +111,7 @@ class App extends Component {
             }
         })
     }
+
     // https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/
     onButtonSubmit = () => {
         // const {imageFormInput} = this.props;
@@ -133,11 +167,11 @@ class App extends Component {
                     </div>
                 );
             case "account":
-                return <Account onRouteChange={this.onRouteChange} isSigned={this.state.isSigned}/>;
+                return <Account onRouteChange={this.onRouteChange} isSigned={this.state.isSigned} />;
             case "password":
-                return <Password onRouteChange={this.onRouteChange} email={this.state.userProfile.email}/>;
+                return <Password onRouteChange={this.onRouteChange} email={this.state.userProfile.email} />;
             case "delete":
-                return <Delete onRouteChange={this.onRouteChange} email={this.state.userProfile.email}/>;
+                return <Delete onRouteChange={this.onRouteChange} email={this.state.userProfile.email} />;
             case "signin":
                 return <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} />;
             case "register":
@@ -147,28 +181,28 @@ class App extends Component {
         }
     }
 
-        toggleModal = () => {
-            this.setState(prevState => ({
-                isProfileOpen: !prevState.isProfileOpen
-            }))
+    toggleModal = () => {
+        this.setState(prevState => ({
+            isProfileOpen: !prevState.isProfileOpen
+        }))
 
-        }
+    }
 
     // Display appropriate components based on current page/root they're on
     render() {
         return (
-            
+
             <div className='App'>
                 <Particles
                     id='tsparticles'
                     init={particlesInit}
                     options={backgroundOptions}
                 />
-                {this.state.isProfileOpen && 
-                <Modal>
-                    <Profile isProfileOpen={this.state.isProfileOpen} user={this.state.userProfile} toggleModal={this.toggleModal} loadUser={this.loadUser}/>
-                    {console.log(this.state.isProfileOpen)}
-                </Modal>
+                {this.state.isProfileOpen &&
+                    <Modal>
+                        <Profile isProfileOpen={this.state.isProfileOpen} user={this.state.userProfile} toggleModal={this.toggleModal} loadUser={this.loadUser} />
+                        {console.log(this.state.isProfileOpen)}
+                    </Modal>
                 }
                 <Navigation onRouteChange={this.onRouteChange} isSigned={this.state.isSigned} toggleModal={this.toggleModal} />
                 {this.pageRouting()}

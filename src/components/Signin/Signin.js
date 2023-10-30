@@ -20,7 +20,6 @@ class Signin extends React.Component {
 
     onSubmitStatus = (data) => {
         switch (data) {
-            
             case "Form":
                 return this.setState({ submissionStatus: "Please fill out all the form fields" })
             case "Not Found":
@@ -33,7 +32,10 @@ class Signin extends React.Component {
                 return this.setState({ submissionStatus: "Something went wrong" })
         }
     }
-    
+
+    saveSessionInWindowStorage = (token) => {
+        window.sessionStorage.setItem("token", token)
+    }
 
     // Send a post request to server to check if credentials match
     // If they do, sign in the user to their account
@@ -47,12 +49,13 @@ class Signin extends React.Component {
             })
         })
             .then(res => res.json())
-            .then(userProfile => {
-                if (userProfile.id) {
-                    this.props.loadUser(userProfile);
+            .then(data => {
+                if (data.userID && data.success === "true") {
+                    this.saveSessionInWindowStorage(data.token)
+                    this.props.loadUser(data);
                     this.props.onRouteChange('home');
                 } else {
-                    this.onSubmitStatus(userProfile);
+                    this.onSubmitStatus(data);
                 }
             }
             )
