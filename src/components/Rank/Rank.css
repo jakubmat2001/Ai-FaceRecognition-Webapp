@@ -7,6 +7,11 @@
     text-align: center;
 }
 
+.error-box {
+  padding-top: 1em;
+  text-align: center;
+}
+
 @media only screen and (max-width: 600px) {
     .rank-txt {
       margin-top: 6rem;

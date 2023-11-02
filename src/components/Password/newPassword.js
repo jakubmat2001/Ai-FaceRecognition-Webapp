@@ -26,23 +26,23 @@ class Password extends React.Component {
     }
 
     onSubmitStatus = (data) => {
-        switch (data){
+        switch (data) {
             case "New":
-                return this.setState({ submissionStatus: "All fields in form must be filled out"})
+                return this.setState({ submissionStatus: "All fields in form must be filled out" })
             case "Email":
-                return this.setState({ submissionStatus: "Failed to find associated email"})
+                return this.setState({ submissionStatus: "Failed to find associated email" })
             case "Length":
-                return this.setState({ submissionStatus: "Password must be at least 6 characters in length"})
+                return this.setState({ submissionStatus: "Password must be at least 6 characters in length" })
             case "Uppercase":
-                return this.setState({ submissionStatus: "Password must start with an uppercase letter"})
+                return this.setState({ submissionStatus: "Password must start with an uppercase letter" })
             case "Different":
-                return this.setState({ submissionStatus: "New password must be different from the old"})
+                return this.setState({ submissionStatus: "New password must be different from the old" })
             case "Same":
-                return this.setState({ submissionStatus: "New password's do not match"})
+                return this.setState({ submissionStatus: "New password's do not match" })
             case "Update":
-                return this.setState({ submissionStatus: "Failed to update password"})
+                return this.setState({ submissionStatus: "Failed to update password" })
             default:
-                return this.setState({ submissionStatus: "Something went wrong"})
+                return this.setState({ submissionStatus: "Something went wrong" })
         }
     }
 
@@ -50,7 +50,10 @@ class Password extends React.Component {
         event.preventDefault();
         fetch("http://localhost:3001/password", {
             method: "put",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": window.sessionStorage.getItem("token")
+            },
             body: JSON.stringify({
                 email: this.state.email,
                 password: this.state.password,
@@ -61,7 +64,7 @@ class Password extends React.Component {
             .then(res => res.json())
             .then(data => {
                 this.onSubmitStatus(data)
-                if (data === "Success"){
+                if (data === "Success") {
                     this.props.onRouteChange("signout")
                 }
             })

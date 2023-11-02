@@ -12,13 +12,9 @@ const Navigation = ({ onRouteChange, isSigned, toggleModal}) => {
                 <div className="logo-container">
                     <Logo />
                 </div>
-                
                 <div className="buttons-container">
                     <ProfileIcon onRouteChange={onRouteChange} toggleModal={toggleModal}/>
                 </div>
-                
-
-                {console.log("IsSigned is true: " + isSigned)}
             </nav>
         );
     } else {
@@ -27,7 +23,6 @@ const Navigation = ({ onRouteChange, isSigned, toggleModal}) => {
             <nav className="navigation">
                 <p onClick={() => onRouteChange("signin")} className="navigation-buttons">Sing In</p>
                 <p onClick={() => onRouteChange("register")} className="navigation-buttons">Register</p>
-                {console.log("IsSigned is false: " + isSigned)}
             </nav>
         );
     }
