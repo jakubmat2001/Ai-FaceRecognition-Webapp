@@ -20,16 +20,14 @@ class Signin extends React.Component {
 
     onSubmitStatus = (data) => {
         switch (data) {
-            case "Form":
+            case "Empty Form Fields":
                 return this.setState({ submissionStatus: "Please fill out all the form fields" })
-            case "Not Found":
-                return this.setState({ submissionStatus: "Failed to find a user" })
+            case "User Not Found":
+                return this.setState({ submissionStatus: "User with this email doesn't exist on our website" })
             case "Password Not Matching":
-                return this.setState({ submissionStatus: "Password you provided is incorrect" })
-            case "Not Existing":
-                return this.setState({ submissionStatus: "This user doen't exist on our website" })
+                return this.setState({ submissionStatus: "Password you provided doesn't match" })
             default:
-                return this.setState({ submissionStatus: "Something went wrong" })
+                return this.setState({ submissionStatus: "Something went wrong, plese try again later" })
         }
     }
 
@@ -65,7 +63,7 @@ class Signin extends React.Component {
                                 this.props.loadUser(user);
                                 this.props.onRouteChange("home");
                             }
-                        })
+                        }).catch(err => console.log("Failed to signin user" + err))
                 } else {
                     this.onSubmitStatus(data);
                 }

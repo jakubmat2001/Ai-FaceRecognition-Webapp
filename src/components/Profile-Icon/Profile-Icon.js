@@ -28,8 +28,8 @@ class ProfileIcon extends React.Component {
                     </DropdownToggle>
                     <DropdownMenu>
                         <DropdownItem onClick={this.props.toggleModal}> View Profile </DropdownItem>
-                        <DropdownItem> Change Password </DropdownItem>
-                        <DropdownItem> Delete Account </DropdownItem>
+                        <DropdownItem onClick={() => this.props.onRouteChange("password")}>  Change Password </DropdownItem>
+                        <DropdownItem onClick={() => this.props.onRouteChange("delete")}> Delete Account </DropdownItem>
                         <DropdownItem onClick={() => this.props.onRouteChange("signout")}> Sign-Out </DropdownItem>
                     </DropdownMenu>
                 </Dropdown>

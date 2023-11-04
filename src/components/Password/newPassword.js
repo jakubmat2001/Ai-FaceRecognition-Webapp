@@ -34,11 +34,11 @@ class Password extends React.Component {
             case "Length":
                 return this.setState({ submissionStatus: "Password must be at least 6 characters in length" })
             case "Uppercase":
-                return this.setState({ submissionStatus: "Password must start with an uppercase letter" })
+                return this.setState({ submissionStatus: "New password must start with an uppercase letter" })
             case "Different":
                 return this.setState({ submissionStatus: "New password must be different from the old" })
             case "Same":
-                return this.setState({ submissionStatus: "New password's do not match" })
+                return this.setState({ submissionStatus: "New password and confirm password fields must be the same" })
             case "Update":
                 return this.setState({ submissionStatus: "Failed to update password" })
             default:
