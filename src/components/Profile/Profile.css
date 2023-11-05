@@ -110,3 +110,33 @@
     background-color: rgb(222, 106, 106);
     color: white;
 }
+
+@media only screen and (min-width: 0px) {
+    .profile-article-html {
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 300px) {
+    .profile-article-html {
+        width: 75%;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    .profile-article-html {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .profile-article-html {
+        width: 40%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .profile-article-html {
+        width: 30%;
+    }
+}

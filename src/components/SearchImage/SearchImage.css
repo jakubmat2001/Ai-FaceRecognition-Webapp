@@ -8,7 +8,7 @@
   font-weight: bold;
 }
 
-.form {
+.form-container {
   justify-content: center;
   display: flex;
 }
@@ -21,13 +21,13 @@
 }
 
 .form-button {
-  height: 2.5em;
   width: 10%;
-  border-radius: 0% 14px 14px 0%;
+  height: 2.9em;
+  font-size: 18px;
+  color: black;
+  border-radius: 0% 10px 10px 0%;
   border: solid black 1px;
   border-left: 0px;
-  color: black;
-  font-size: 18px;
   transition: all 0.5s;
   cursor: pointer;
   display: flex;
@@ -66,8 +66,8 @@
 
   .form-button {
     width: 30%;
-    font-size: 13px;
-    height: 4.1em;
+    font-size: 15px;
+    height: 4.5em;
   }
 }
 
@@ -75,7 +75,8 @@
   .form-button {
     width: 20%;
     font-size: 20px;
-    height: 2.65em;
+    height: 3em;
+
   }
 }
 
@@ -86,15 +87,16 @@
 
   .form-button {
     width: 20%;
+
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1100px) {
   .form-input {
-    width: 50%;
+    width: 55%;
   }
 
   .form-button {
-    width: 10%;
+    width: 15%;
   }
 }

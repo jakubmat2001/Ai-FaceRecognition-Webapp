@@ -10,6 +10,7 @@
 
 .navigation {
   width: 100%;
+  margin-top: 10px;
   display: inline-flex;
   justify-content: flex-end;
 }
@@ -19,7 +20,6 @@
   display: flex;
   justify-content: flex-end;
   height: 100px;
-
 }
 
 .logo-container {
@@ -29,7 +29,7 @@
 }
 
 .navigation-buttons {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   margin-top: auto;
   margin-bottom: auto;
   color: black;
@@ -44,6 +44,11 @@
   text-decoration: underline;
 }
 
+.logo-container {
+  width: 0px;
+  height: 0px;
+}
+
 @media only screen and (max-width: 600px) {
   .navigation-buttons {
     margin-left: auto;
@@ -51,10 +56,7 @@
     padding-right: 0;
     font-size: 1.5rem;
   }
-
-  .logo-container {
-    width: 0px;
-    height: 0px;
-  }
 }
+
+
 

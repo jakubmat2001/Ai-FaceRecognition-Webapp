@@ -7,11 +7,7 @@
 
 .drop-down-profile {
     display: flex;
-    padding: 5px;
-}
-
-.drop-down-list {
-    padding-top: 20px;
+    padding: 15px 20px 0 0;
 }
 
 /* Overriding some properties forced by the react-strap library */

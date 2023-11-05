@@ -28,28 +28,6 @@
 
 }
 
-/* media width content */
-@media only screen and (max-width: 600px) {
-    .delete-account-outter-container {
-        width: 93%;
-        margin-top: 30%;
-    }
-
-}
-
-@media only screen and (min-width: 1504px) {
-    .disclaimer-container{
-        grid-column: span 2;
-           
-        }
-    
-    .delete-disclaimer-text{
-        margin-left: None;
-    }
-}
-
-
-
 .delete-account-label-container {
     margin-left: 1rem;
 }
@@ -164,4 +142,22 @@
 
 .delete-error-msg{
     font-size: small;
+}
+
+/* media width content */
+@media only screen and (max-width: 600px) {
+    .delete-account-outter-container {
+        width: 93%;
+        margin-top: 0;
+    }
+}
+
+@media only screen and (min-width: 1504px) {
+    .disclaimer-container{
+        grid-column: span 2;
+        }
+    
+    .delete-disclaimer-text{
+        margin-left: None;
+    }
 }
