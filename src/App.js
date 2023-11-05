@@ -171,6 +171,7 @@ class App extends Component {
         // Change the state of isSigned property depending on the route
         if (route === "signout") {
             this.setState(userInitialState);
+            sessionStorage.removeItem("token")
         } else if (route === "home") {
             this.setState({ isSigned: true });
         }
