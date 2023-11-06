@@ -8,7 +8,7 @@ const SearchImage = ({onInputChange, onButtonSubmit}) =>{
             <p className="info-text">
                 {"Insert URL of an image into input box below."}
             </p>
-            <div className="form">
+            <div className="form-container">
                 <input className='form-input' type="text" placeholder="https://www.images.com/coupleOnAScooter.jpeg" onChange={onInputChange}/>
                 <button className="form-button" onClick={onButtonSubmit}><span>Detect</span></button>
             </div>

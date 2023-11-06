@@ -1,9 +1,10 @@
 import React from "react";
 import Logo from "../Logo/Logo";
+import ProfileIcon from "../Profile-Icon/Profile-Icon";
 import './Navigation.css';
 
 
-const Navigation = ({ onRouteChange, isSigned }) => {
+const Navigation = ({ onRouteChange, isSigned, toggleModal}) => {
     if (isSigned) {
         // If user is signed in, show signout buttons and send end-user to Signin route once clicked on
         return (
@@ -11,14 +12,9 @@ const Navigation = ({ onRouteChange, isSigned }) => {
                 <div className="logo-container">
                     <Logo />
                 </div>
-                
                 <div className="buttons-container">
-                    <p onClick={() => onRouteChange("home")} name="home" className="navigation-buttons">Home</p>
-                    <p onClick={() => onRouteChange("account")} name="account" className="navigation-buttons">Account</p>
-                    <p onClick={() => onRouteChange("signout")} name="signout" className="navigation-buttons">Sing Out</p>
+                    <ProfileIcon onRouteChange={onRouteChange} toggleModal={toggleModal}/>
                 </div>
-
-                {console.log("IsSigned is true: " + isSigned)}
             </nav>
         );
     } else {
@@ -27,7 +23,6 @@ const Navigation = ({ onRouteChange, isSigned }) => {
             <nav className="navigation">
                 <p onClick={() => onRouteChange("signin")} className="navigation-buttons">Sing In</p>
                 <p onClick={() => onRouteChange("register")} className="navigation-buttons">Register</p>
-                {console.log("IsSigned is false: " + isSigned)}
             </nav>
         );
     }

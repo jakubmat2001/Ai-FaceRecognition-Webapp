@@ -22,8 +22,6 @@
     border-radius: 10%;
     height: auto;
     width: 500px;
-    
-    
 }
 
 .face-box{
@@ -38,8 +36,17 @@
     -ms-flex-pack: center;
     -webkit-box-pack:center;
     -ms-flex-wrap: wrap;
-    
 }
 
+@media only screen and (min-width: 0px) {
+    .url-img{
+        width: 370px;
+    }
+}
 
+@media only screen and (min-width: 600px) {
+    .url-img{
+        width: 500px;
+    }
+}
 

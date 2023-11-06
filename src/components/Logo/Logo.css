@@ -1,6 +1,6 @@
 /* Remove the logo from navigation-bar */
 @media only screen and (min-width: 0px) {
-    .image {
+    .image img{
         width: 0px;
         height: 0px;
     }
@@ -13,12 +13,11 @@
 }
 
 @media only screen and (min-width: 600px) {
-    .image {
-        width: 150px;
-        height: 150px;
-        padding: 1.5em;
-        margin: 5px;
+    .image img{
+        width: 120px;
+        height: 120px;
         float: left;
+        padding-left: 10px;
     }
 
     

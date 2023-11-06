@@ -49,7 +49,10 @@ class Delete extends React.Component {
         event.preventDefault();
         fetch("http://localhost:3001/delete", {
             method: "delete",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": window.sessionStorage.getItem("token")
+            },
             body: JSON.stringify({
                 email: this.state.email,
                 password: this.state.password,
@@ -78,7 +81,7 @@ class Delete extends React.Component {
                         </div>
 
                         <div className="delete-account-container">
-                            <input className="delete-input-form" onChange={this.onPasswordChange} placeholder="password" type="password"/>
+                            <input className="delete-input-form" onChange={this.onPasswordChange} placeholder="password" type="password" />
                         </div>
 
                         <div className="delete-account-container">

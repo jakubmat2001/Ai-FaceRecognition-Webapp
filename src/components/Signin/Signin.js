@@ -20,20 +20,20 @@ class Signin extends React.Component {
 
     onSubmitStatus = (data) => {
         switch (data) {
-            
-            case "Form":
+            case "Empty Form Fields":
                 return this.setState({ submissionStatus: "Please fill out all the form fields" })
-            case "Not Found":
-                return this.setState({ submissionStatus: "Failed to find a user" })
+            case "User Not Found":
+                return this.setState({ submissionStatus: "User with this email doesn't exist on our website" })
             case "Password Not Matching":
-                return this.setState({ submissionStatus: "Password you provided is incorrect" })
-            case "Not Existing":
-                return this.setState({ submissionStatus: "This user doen't exist on our website" })
+                return this.setState({ submissionStatus: "Password you provided doesn't match" })
             default:
-                return this.setState({ submissionStatus: "Something went wrong" })
+                return this.setState({ submissionStatus: "Something went wrong, plese try again later" })
         }
     }
-    
+
+    saveSessionInWindowStorage = (token) => {
+        window.sessionStorage.setItem("token", token)
+    }
 
     // Send a post request to server to check if credentials match
     // If they do, sign in the user to their account
@@ -47,15 +47,27 @@ class Signin extends React.Component {
             })
         })
             .then(res => res.json())
-            .then(userProfile => {
-                if (userProfile.id) {
-                    this.props.loadUser(userProfile);
-                    this.props.onRouteChange('home');
+            .then(data => {
+                if (data.userID && data.success === "true") {
+                    this.saveSessionInWindowStorage(data.token)
+                    fetch(`http://localhost:3001/profile/${data.userID}`, {
+                        method: "get",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": data.token
+                        }
+                    })
+                        .then(res => res.json())
+                        .then(user => {
+                            if (user && user.email) {
+                                this.props.loadUser(user);
+                                this.props.onRouteChange("home");
+                            }
+                        }).catch(err => console.log("Failed to signin user" + err))
                 } else {
-                    this.onSubmitStatus(userProfile);
+                    this.onSubmitStatus(data);
                 }
-            }
-            )
+            })
     }
 
     render() {

@@ -31,15 +31,17 @@ class Register extends React.Component {
 
     onSubmitStatus = (data) => {
         switch (data) {
-            case "Form":
+            case "Unfilled From Fields":
                 return this.setState({ submissionStatus: "Please fill out all the fields in form " })
+            case "Existing Email":
+                return this.setState({ submissionStatus: "Entered email already exists on our website " })
             case "Failed":
-                return this.setState({ submissionStatus: "Failed to register a user, this e-mail might already exists in our database" })
-            case "Lenght":
+                return this.setState({ submissionStatus: "Failed to register a user, try again later" })
+            case "Password Length":
                 return this.setState({ submissionStatus: "Password must be at least 6 characters in length" })
-            case "Uppercase":
+            case "Uppercase Letter":
                 return this.setState({submissionStatus: "Password must start with an uppercase letter"})
-            case "Same":
+            case "Same Password Entered":
                 return this.setState({submissionStatus: "Password's do not match"})
             default:
                 return this.setState({ submissionStatus: "Something went wrong" })
@@ -91,8 +93,8 @@ class Register extends React.Component {
                                     <input className="register-input-properties" type="password" name="password" id="password" onChange={this.onPasswordChange} />
                                 </div>
                                 <div className="register-form-div">
-                                    <label className="register-form-label" htmlFor="password">Confirm Password</label>
-                                    <input className="register-input-properties" type="password" name="password" id="password" onChange={this.onConfirmPasswordChange} />
+                                    <label className="register-form-label" htmlFor="conf-password">Confirm Password</label>
+                                    <input className="register-input-properties" type="password" name="confirm-password" id="conf-password" onChange={this.onConfirmPasswordChange} />
                                 </div>
                             </fieldset>
                             <div className="">

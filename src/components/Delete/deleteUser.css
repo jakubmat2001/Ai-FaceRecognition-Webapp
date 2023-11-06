@@ -1,7 +1,3 @@
-* {
-    z-index: 1;
-    position: relative;
-}
 
 /* Main Containers */
 .delete-account-outter-container {
@@ -13,14 +9,12 @@
     margin-top: 10%;
     border: 1px solid grey;
     border-radius: 20px;
-
 }
 
 .delete-account-form {
     width:100%;
     margin-right: auto;
     grid-column: span 1;
-
 }
 
 .disclaimer-container {
@@ -34,34 +28,13 @@
 
 }
 
-/* media width content */
-@media only screen and (max-width: 600px) {
-    .delete-account-outter-container {
-        width: 93%;
-        margin-top: 30%;
-    }
-
-}
-
-@media only screen and (min-width: 1504px) {
-    .disclaimer-container{
-        grid-column: span 2;
-           
-        }
-    
-    .delete-disclaimer-text{
-        margin-left: None;
-    }
-}
-
-
-
 .delete-account-label-container {
     margin-left: 1rem;
 }
 
 .delete-account-label {
     margin: auto;
+    text-align: center;
     padding: 20px 0 20px 0;
     justify-content: center;
     font-size: large;
@@ -169,4 +142,22 @@
 
 .delete-error-msg{
     font-size: small;
+}
+
+/* media width content */
+@media only screen and (max-width: 600px) {
+    .delete-account-outter-container {
+        width: 93%;
+        margin-top: 0;
+    }
+}
+
+@media only screen and (min-width: 1504px) {
+    .disclaimer-container{
+        grid-column: span 2;
+        }
+    
+    .delete-disclaimer-text{
+        margin-left: None;
+    }
 }
