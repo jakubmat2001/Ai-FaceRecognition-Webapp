@@ -27,6 +27,7 @@ const userInitialState = {
         name: "",
         email: "",
         password: "",
+        profileImg: "",
         entries: 0,
         joined: ""
     }
@@ -112,6 +113,7 @@ class App extends Component {
                 name: user.name,
                 email: user.email,
                 password: user.password,
+                profileImg: user.profileImg,
                 entries: user.entries,
                 joined: user.joined
             }
