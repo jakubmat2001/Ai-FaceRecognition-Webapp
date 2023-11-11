@@ -218,8 +218,6 @@ class App extends Component {
 
     // Display appropriate components based on current page/root they're on
     render() {
-        console.log("render")
-
         return (
             <div className='App'>
                 <Particles

@@ -12,7 +12,7 @@ class ProfileIcon extends React.Component {
         }
     }
 
-    // binding our drop-down profile
+    // Sinding our drop-down profile
     toggle() {
         this.setState(prevState => ({
             DropDownOpen: !prevState.DropDownOpen
@@ -20,8 +20,8 @@ class ProfileIcon extends React.Component {
     }
 
     render() {
+        // Set the profile image to default user image
         let { profileImg } = this.state
-        console.log(`profile img rendered ${profileImg}`)
         if (profileImg === null || profileImg === undefined){
             profileImg = this.props.defaultProfileImg;
         }

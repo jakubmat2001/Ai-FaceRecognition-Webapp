@@ -7,7 +7,8 @@ class Profile extends React.Component {
         this.state = {
             name: this.props.user.name,
             entries: this.props.user.entries,
-            profileImg: this.props.user.profileImg
+            profileImg: this.props.user.profileImg,
+            profileImgCopy: null
         }
     }
 
@@ -17,33 +18,35 @@ class Profile extends React.Component {
                 this.setState({ name: event.target.value })
                 break;
             case "profile-img":
-                this.setState({ profileImg: event.target.files[0] });
+                const profileImageFile = event.target.files[0]
+                this.setState({ profileImg: profileImageFile });
+                this.setState({ profileImgCopy: URL.createObjectURL(profileImageFile)})
                 break;
             default:
                 return
-                }
         }
+    }
 
-        onProfileUpdate = (data) => {
-            console.log(data.name);
-            const formData = new FormData();
-            formData.append("name", data.name);
-            if (data.profileImg) {
-                formData.append("image", data.profileImg);
-            }
-            const token = window.sessionStorage.getItem("token");
-            fetch(`http://localhost:3001/profile/${this.props.user.id}`, {
-                method: "post",
-                headers: {
-                    "Authorization": token
-                },
-                body: formData
-            })
+    // Since our backend requires multer to receive image files
+    // We need to consturct form with data that we wish to change 
+    onProfileUpdate = (data) => {
+        const formData = new FormData();
+        formData.append("name", data.name);
+        if (data.profileImg) {
+            formData.append("image", data.profileImg);
+        }
+        const token = window.sessionStorage.getItem("token");
+        fetch(`http://localhost:3001/profile/${this.props.user.id}`, {
+            method: "post",
+            headers: {
+                "Authorization": token
+            },
+            body: formData
+        })
             .then(resp => resp.json()) // Convert the response to JSON
             .then(response => {
                 if (response.success) {
                     const responseImg = response.profileImg = `data:image/jpeg;base64,${response.profile_img}`;
-                    console.log(`pring respongImg: ${responseImg}`)
                     this.props.loadUser({ ...this.props.user, name: data.name, profileImg: responseImg.profile_img });
                     this.props.toggleModal();
                     window.location.reload();
@@ -54,12 +57,21 @@ class Profile extends React.Component {
             .catch(error => {
                 console.log(error);
             });
+    }
 
+    // We check if the profileImg is an object in the state, which it will if it's uploaded from desktop
+    // If so we'll display the user uploaded image modified to display it on frontend prior to uploading 
+    checkProfileImg = (profileImg) => {
+        if (profileImg instanceof File) {
+            return this.state.profileImgCopy
         }
+        return profileImg
+    }
+
 
     render() {
         let { name, profileImg } = this.state
-        if (profileImg === null || profileImg === undefined){
+        if (profileImg === null || profileImg === undefined) {
             profileImg = this.props.defaultProfileImg;
         }
         return (
@@ -69,7 +81,7 @@ class Profile extends React.Component {
                         <form className="profile-form-contents">
                             <fieldset id="profile" className="profile-form-grouping">
                                 <div className="top-profile-container">
-                                    <img className="profile-img" src={profileImg} alt=""></img>
+                                    <img className="profile-img-modal" src={this.checkProfileImg(profileImg)} alt=""></img>
                                     <legend className="profile-label">Profile</legend>
                                     <div className="profile-exit" onClick={this.props.toggleModal}>X</div>
                                 </div>
