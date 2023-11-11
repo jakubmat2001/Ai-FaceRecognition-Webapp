@@ -1,24 +1,23 @@
 /* Remove the logo from navigation-bar */
 @media only screen and (min-width: 0px) {
-    .image img{
+    .logo-image{
         width: 0px;
         height: 0px;
-    }
-
-    .image:hover {
-        /* these 2 properties allow border to slowly  disolve over 0.3s*/
-        border-width: 0px;
-        border: 3px solid rgba(0, 0, 0, 0);
     }
 }
 
 @media only screen and (min-width: 600px) {
-    .image img{
-        width: 120px;
-        height: 120px;
+    .logo-image{
+        width: 100px;
+        height: 100px;
         float: left;
-        padding-left: 10px;
+        cursor: pointer;
     }
 
+    .logo-image-container{
+        width: 140px;
+        height: 140px;
+        display: flex;
+    }
     
 }

@@ -10,7 +10,7 @@ const Navigation = ({ onRouteChange, isSigned, toggleModal, defaultProfileImg, u
         return (
             <nav className="navigation-signed">
                 <div className="logo-container">
-                    <Logo />
+                    <Logo onRouteChange={onRouteChange} />
                 </div>
                 <div className="buttons-container">
                         <ProfileIcon onRouteChange={onRouteChange} toggleModal={toggleModal} defaultProfileImg={defaultProfileImg} userProfileImg={userProfileImg}/>
