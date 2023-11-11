@@ -1,5 +1,5 @@
 import React from "react";
-import './Signin.css'
+import './Signin.css';
 
 class Signin extends React.Component {
     constructor(props) {
@@ -8,6 +8,7 @@ class Signin extends React.Component {
             signInEmail: '',
             signInPassword: '',
             submissionStatus: '',
+            defaultProfileImg: this.props.defaultProfileImg
         }
     }
 
@@ -60,6 +61,12 @@ class Signin extends React.Component {
                         .then(res => res.json())
                         .then(user => {
                             if (user && user.email) {
+                                if (user.profile_img) {
+                                    // We are converting the bytea to base64 to display it on frontend
+                                    user.profileImg = `data:image/jpeg;base64,${user.profile_img}`; 
+                                }else {
+                                    user.profileImg = this.state.profileImg
+                                }
                                 this.props.loadUser(user);
                                 this.props.onRouteChange("home");
                             }

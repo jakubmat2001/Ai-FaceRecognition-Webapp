@@ -1,6 +1,5 @@
 import React from "react";
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import defaultProfileIcon from "./img/defaultProfileIcon.png"
 import './Profile-Icon.css'
 
 class ProfileIcon extends React.Component {
@@ -8,7 +7,8 @@ class ProfileIcon extends React.Component {
         super(props)
         this.toggle = this.toggle.bind(this);
         this.state = {
-            DropDownOpen: false
+            DropDownOpen: false,
+            profileImg: this.props.userProfileImg 
         }
     }
 
@@ -20,11 +20,16 @@ class ProfileIcon extends React.Component {
     }
 
     render() {
+        let { profileImg } = this.state
+        console.log(`profile img rendered ${profileImg}`)
+        if (profileImg === null || profileImg === undefined){
+            profileImg = this.props.defaultProfileImg;
+        }
         return (
             <div className="drop-down-profile">
                 <Dropdown isOpen={this.state.DropDownOpen} toggle={this.toggle} className="drop-down-list">
                     <DropdownToggle data-toggle="dropdown" tag="span">
-                        <img className="profile-img" src={defaultProfileIcon} alt="profile-Icon" />
+                        <img className="profile-img" src={profileImg} alt="profile-Icon" />
                     </DropdownToggle>
                     <DropdownMenu>
                         <DropdownItem onClick={this.props.toggleModal}> View Profile </DropdownItem>
@@ -37,6 +42,5 @@ class ProfileIcon extends React.Component {
         )
     }
 }
-
 
 export default ProfileIcon

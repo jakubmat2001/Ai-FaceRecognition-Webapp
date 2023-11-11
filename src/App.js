@@ -12,6 +12,7 @@ import Modal from './components/Modal/Modal'
 import Particles from "react-particles";
 import { Component } from "react";
 import { backgroundOptions, particlesInit } from './particlesOptions';
+import defaultProfileIcon from "./img/defaultProfileIcon.png"
 
 
 const userInitialState = {
@@ -27,7 +28,7 @@ const userInitialState = {
         name: "",
         email: "",
         password: "",
-        profileImg: "",
+        profileImg: defaultProfileIcon,
         entries: 0,
         joined: ""
     }
@@ -40,6 +41,7 @@ class App extends Component {
     }
 
     componentDidMount() {
+        console.log("mount")
         const token = window.sessionStorage.getItem('token');
         if (token) {
             fetch("http://localhost:3001/signin", {
@@ -62,6 +64,12 @@ class App extends Component {
                             .then(res => res.json())
                             .then(user => {
                                 if (user && user.email) {
+                                    if (user.profile_img) {
+                                        // We are converting the bytea to base64 to display it on frontend
+                                        user.profileImg = `data:image/jpeg;base64,${user.profile_img}`;
+                                    }else {
+                                        user.profileImg = this.state.userProfile.profileImg;
+                                    }
                                     this.loadUser(user);
                                     this.onRouteChange("home");
                                 }
@@ -162,12 +170,6 @@ class App extends Component {
             }).catch(error => console.log("Failed to fetch data: " + error));
     }
 
-    // errorHandling = (status) => {
-    //     switch (this.state.onsubmitStatus){
-    //         case "Invalid Image URL":
-    //             return 
-    //     }
-    // }
 
     onRouteChange = (route) => {
         // Change the state of isSigned property depending on the route
@@ -182,6 +184,7 @@ class App extends Component {
 
     // Improved routing for our app, any existing app routes should be mentioned in here
     pageRouting() {
+
         switch (this.state.route) {
             case "home":
                 return (
@@ -198,7 +201,7 @@ class App extends Component {
             case "delete":
                 return <Delete onRouteChange={this.onRouteChange} email={this.state.userProfile.email} />;
             case "signin":
-                return <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} />;
+                return <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} defaultProfileImg={this.state.userProfile.profileImg} />;
             case "register":
                 return <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />;
             default:
@@ -215,6 +218,8 @@ class App extends Component {
 
     // Display appropriate components based on current page/root they're on
     render() {
+        console.log("render")
+
         return (
             <div className='App'>
                 <Particles
@@ -224,11 +229,11 @@ class App extends Component {
                 />
                 {this.state.isProfileOpen &&
                     <Modal>
-                        <Profile isProfileOpen={this.state.isProfileOpen} user={this.state.userProfile} toggleModal={this.toggleModal} loadUser={this.loadUser} />
+                        <Profile isProfileOpen={this.state.isProfileOpen} user={this.state.userProfile} toggleModal={this.toggleModal} loadUser={this.loadUser} defaultProfileImg={defaultProfileIcon}/>
                         {console.log(this.state.isProfileOpen)}
                     </Modal>
                 }
-                <Navigation onRouteChange={this.onRouteChange} isSigned={this.state.isSigned} toggleModal={this.toggleModal} />
+                <Navigation onRouteChange={this.onRouteChange} isSigned={this.state.isSigned} toggleModal={this.toggleModal} userProfileImg={this.state.userProfile.profileImg} defaultProfileImg={defaultProfileIcon}/>
                 {this.pageRouting()}
             </div>
         );

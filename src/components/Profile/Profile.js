@@ -1,5 +1,4 @@
 import React from "react";
-import defaultProfileIcon from "../Profile-Icon/img/defaultProfileIcon.png"
 import "./Profile.css"
 
 class Profile extends React.Component {
@@ -16,34 +15,53 @@ class Profile extends React.Component {
         switch (event.target.name) {
             case "name":
                 this.setState({ name: event.target.value })
-                console.log(event.target.name)
                 break;
             case "profile-img":
-                this.setState({ profileImg: event.target.value })
-                console.log(event.target.name)
+                this.setState({ profileImg: event.target.files[0] });
                 break;
+            default:
+                return
+                }
+        }
+
+        onProfileUpdate = (data) => {
+            console.log(data.name);
+            const formData = new FormData();
+            formData.append("name", data.name);
+            if (data.profileImg) {
+                formData.append("image", data.profileImg);
+            }
+            const token = window.sessionStorage.getItem("token");
+            fetch(`http://localhost:3001/profile/${this.props.user.id}`, {
+                method: "post",
+                headers: {
+                    "Authorization": token
+                },
+                body: formData
+            })
+            .then(resp => resp.json()) // Convert the response to JSON
+            .then(response => {
+                if (response.success) {
+                    const responseImg = response.profileImg = `data:image/jpeg;base64,${response.profile_img}`;
+                    console.log(`pring respongImg: ${responseImg}`)
+                    this.props.loadUser({ ...this.props.user, name: data.name, profileImg: responseImg.profile_img });
+                    this.props.toggleModal();
+                    window.location.reload();
+                } else {
+                    throw new Error('Profile update was unsuccessful.');
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
 
         }
-    }
-
-    onProfileUpdate = (data) => {
-        const token = window.sessionStorage.getItem("token")
-        fetch(`http://localhost:3001/profile/${this.props.user.id}`, {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": token
-            },
-            body: JSON.stringify({ formInput: data })
-        })
-            .then(resp => {
-                this.props.toggleModal();
-                this.props.loadUser({ ...this.props.user, ...data });
-            }).catch(console.log)
-    }
 
     render() {
-        const { name, profileImg } = this.state
+        let { name, profileImg } = this.state
+        if (profileImg === null || profileImg === undefined){
+            profileImg = this.props.defaultProfileImg;
+        }
         return (
             <div className="profile-container" >
                 <article className="profile-article-html">
@@ -51,7 +69,7 @@ class Profile extends React.Component {
                         <form className="profile-form-contents">
                             <fieldset id="profile" className="profile-form-grouping">
                                 <div className="top-profile-container">
-                                    <img className="profile-img" src={profileImg}></img>
+                                    <img className="profile-img" src={profileImg} alt=""></img>
                                     <legend className="profile-label">Profile</legend>
                                     <div className="profile-exit" onClick={this.props.toggleModal}>X</div>
                                 </div>
