@@ -20,7 +20,7 @@ class Profile extends React.Component {
             case "profile-img":
                 const profileImageFile = event.target.files[0]
                 this.setState({ profileImg: profileImageFile });
-                this.setState({ profileImgCopy: URL.createObjectURL(profileImageFile)})
+                this.setState({ profileImgCopy: URL.createObjectURL(profileImageFile) })
                 break;
             default:
                 return
@@ -32,8 +32,9 @@ class Profile extends React.Component {
     onProfileUpdate = (data) => {
         const formData = new FormData();
         formData.append("name", data.name);
-        if (data.profileImg) {
+        if (data.profileImg && data.profileImg instanceof File) {
             formData.append("image", data.profileImg);
+            console.log(`data in image ${data.profileImg}`)
         }
         const token = window.sessionStorage.getItem("token");
         fetch(`http://localhost:3001/profile/${this.props.user.id}`, {
@@ -46,12 +47,18 @@ class Profile extends React.Component {
             .then(resp => resp.json()) // Convert the response to JSON
             .then(response => {
                 if (response.success) {
-                    const responseImg = response.profileImg = `data:image/jpeg;base64,${response.profile_img}`;
-                    this.props.loadUser({ ...this.props.user, name: data.name, profileImg: responseImg.profile_img });
-                    this.props.toggleModal();
-                    window.location.reload();
-                } else {
-                    throw new Error('Profile update was unsuccessful.');
+                    // This code allows users to update individual profile details or all of them
+                    try {
+                        const responseImg = response.profileImg = `data:image/jpeg;base64,${response.profile_img}`;
+                        this.props.loadUser({ ...this.props.user, name: data.name, profileImg: responseImg.profile_img });
+                        this.props.toggleModal();
+                        window.location.reload();
+                    } finally {
+                        this.props.loadUser({ ...this.props.user, name: data.name });
+                        this.props.toggleModal();
+                        window.location.reload();
+                    }
+                    
                 }
             })
             .catch(error => {
