@@ -1,16 +1,17 @@
 import React from "react";
 import Tilt from 'react-parallax-tilt';
+import LogoImg from "./LogoImg.png"
 import './Logo.css';
 
-const Logo = () => {
+const Logo = ({onRouteChange}) => {
     return (
-
-        <div className="image">
-            <Tilt scale={1.1} tiltMaxAngleY={30} tiltMaxAngleX={30} transitionSpeed={2000}>
-            <img
-                src="https://www.freeiconspng.com/thumbs/artificial-intelligence-icon-png/artificial-intelligence-png-11.png"
+        <div className="logo-image-container">
+            <Tilt scale={1} tiltMaxAngleY={45} tiltMaxAngleX={45} transitionSpeed={3000}>
+                <img className="logo-image"
+                src={LogoImg}
                 alt="logo"
                 data-tilt
+                onClick={() => onRouteChange("home")}
             />
             </Tilt>
         </div>
