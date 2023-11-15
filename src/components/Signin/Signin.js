@@ -27,6 +27,8 @@ class Signin extends React.Component {
                 return this.setState({ submissionStatus: "User with this email doesn't exist on our website" })
             case "Password Not Matching":
                 return this.setState({ submissionStatus: "Password you provided doesn't match" })
+            case "User not verified":
+                return this.setState({ submissionStatus: "User with the following email hasn't been verified yet" })
             default:
                 return this.setState({ submissionStatus: "Something went wrong, plese try again later" })
         }

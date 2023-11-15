@@ -43,9 +43,19 @@ class Register extends React.Component {
                 return this.setState({submissionStatus: "Password must start with an uppercase letter"})
             case "Same Password Entered":
                 return this.setState({submissionStatus: "Password's do not match"})
+            case "success":
+                return this.setState({submissionStatus: "Check your email for email verification link"})
             default:
                 return this.setState({ submissionStatus: "Something went wrong" })
         }
+    }
+
+    clearFormInputs = () => {
+        document.getElementById("Name").value = "";
+        document.getElementById("email-address").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("conf-password").value = "";
+
     }
 
     // Send a request to server and pass parameters in body to it
@@ -64,7 +74,8 @@ class Register extends React.Component {
             .then(user => {
                 if (user.id) {
                     this.props.loadUser(user);
-                    this.props.onRouteChange('signout');
+                    this.onSubmitStatus("success")
+                    this.clearFormInputs();
                 } else {
                     this.onSubmitStatus(user)
                 }

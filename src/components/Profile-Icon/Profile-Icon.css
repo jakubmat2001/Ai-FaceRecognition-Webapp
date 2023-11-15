@@ -2,7 +2,7 @@
     border-radius: 50%;
     width: 53px;
     height: 53px;
-    border: solid black 1;
+    border: solid black 1px;
     object-fit: cover;
 }
 
