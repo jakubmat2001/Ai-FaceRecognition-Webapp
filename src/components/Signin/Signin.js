@@ -28,10 +28,39 @@ class Signin extends React.Component {
             case "Password Not Matching":
                 return this.setState({ submissionStatus: "Password you provided doesn't match" })
             case "User not verified":
-                return this.setState({ submissionStatus: "User with the following email hasn't been verified yet" })
+                return this.setState({ submissionStatus: (
+                    <div>
+                        Please verify your email <br />
+                        {this.verificationLink()}
+                    </div>
+                )
+            });
+            case "Verification sent":
+                return this.setState({ submissionStatus: "Verification email was sent, check your email" })
             default:
                 return this.setState({ submissionStatus: "Something went wrong, plese try again later" })
         }
+    }
+
+    verificationLink = () => {
+        return (<p className="validation-link"onClick={this.resendVerificationLink}>Resend link</p>);
+    }
+
+    resendVerificationLink = () => {
+        fetch("http://localhost:3001/resend-verification", {
+            method: "post",
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify({
+                email: this.state.signInEmail,
+            })
+        }).then(res => res.json())
+          .then(data => {
+            console.log(data)
+            if (data == "Verification sent"){
+                console.log("if triggered")
+                this.onSubmitStatus(data)
+            }
+          })
     }
 
     saveSessionInWindowStorage = (token) => {

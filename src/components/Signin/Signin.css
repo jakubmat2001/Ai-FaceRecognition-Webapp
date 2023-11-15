@@ -112,7 +112,14 @@
 .signin-error-msg-container{
     display: flex;
     justify-content: center;
+    text-align: center;
 }
 .signin-error-msg{
     font-size: small;
+}
+
+.validation-link {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
 }
