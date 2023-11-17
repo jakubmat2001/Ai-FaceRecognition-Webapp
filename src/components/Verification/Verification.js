@@ -2,7 +2,6 @@ import React from "react";
 import './Verification.css'
 
 const Verification = ({ email }) => {
-
     return (
         <div className="verification-container">
             <div className="text-1-container">

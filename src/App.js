@@ -13,12 +13,13 @@ import Verification from './components/Verification/Verification';
 import Particles from "react-particles";
 import { Component } from "react";
 import { backgroundOptions, particlesInit } from './particlesOptions';
-import defaultProfileIcon from "./img/defaultProfileIcon.png"
+import defaultProfileIcon from "./img/defaultProfileIcon.png";
+import defaultFaceImage from "./img/defaultFaceImage.png";
 
 
 const userInitialState = {
     imageFormInput: "",
-    imageURL: "https://png.pngitem.com/pimgs/s/623-6236346_person-icon-png-download-person-illustration-transparent-png.png",
+    imageURL: defaultFaceImage,
     box: {},
     route: "signin",
     isSigned: false,
@@ -42,7 +43,6 @@ class App extends Component {
     }
 
     componentDidMount() {
-        console.log("mount")
         const token = window.sessionStorage.getItem('token');
         if (token) {
             fetch("http://localhost:3001/signin", {
