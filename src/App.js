@@ -9,6 +9,7 @@ import Password from './components/Password/newPassword';
 import Delete from './components/Delete/deleteUser';
 import Profile from './components/Profile/Profile';
 import Modal from './components/Modal/Modal'
+import Verification from './components/Verification/Verification';
 import Particles from "react-particles";
 import { Component } from "react";
 import { backgroundOptions, particlesInit } from './particlesOptions';
@@ -184,7 +185,6 @@ class App extends Component {
 
     // Improved routing for our app, any existing app routes should be mentioned in here
     pageRouting() {
-
         switch (this.state.route) {
             case "home":
                 return (
@@ -204,6 +204,8 @@ class App extends Component {
                 return <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} defaultProfileImg={this.state.userProfile.profileImg} />;
             case "register":
                 return <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />;
+            case "verify":
+                return <Verification email={this.state.userProfile.email} />;
             default:
                 return <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} />;
         }

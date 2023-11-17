@@ -8,7 +8,8 @@ class Signin extends React.Component {
             signInEmail: '',
             signInPassword: '',
             submissionStatus: '',
-            defaultProfileImg: this.props.defaultProfileImg
+            defaultProfileImg: this.props.defaultProfileImg,
+            isLinkDisabled: false
         }
     }
 
@@ -36,17 +37,33 @@ class Signin extends React.Component {
                 )
             });
             case "Verification sent":
-                return this.setState({ submissionStatus: "Verification email was sent, check your email" })
+                return this.setState({ submissionStatus: "Verification email was sent check your email" })
             default:
                 return this.setState({ submissionStatus: "Something went wrong, plese try again later" })
         }
     }
 
     verificationLink = () => {
-        return (<p className="validation-link"onClick={this.resendVerificationLink}>Resend link</p>);
+        let linkClass = this.state.isLinkDisabled ? "validation-link-disabled" : "validation-link";
+        return (
+            <p className={linkClass} onClick={this.resendVerificationLink}>
+                {this.state.isLinkDisabled ? "Please wait..." : "Resend link"}
+            </p>
+        );
     }
 
     resendVerificationLink = () => {
+        if (this.state.isLinkDisabled) {
+            return; 
+        }
+
+        this.setState({ isLinkDisabled: true }); 
+
+        // Re-enable the link after 60 seconds
+        setTimeout(() => {
+            this.setState({ isLinkDisabled: false }); 
+        }, 60000);
+
         fetch("http://localhost:3001/resend-verification", {
             method: "post",
             headers: { "Content-Type": "application/json"},

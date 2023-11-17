@@ -34,28 +34,18 @@ class Register extends React.Component {
             case "Unfilled From Fields":
                 return this.setState({ submissionStatus: "Please fill out all the fields in form " })
             case "Existing Email":
-                return this.setState({ submissionStatus: "Entered email already exists on our website " })
+                return this.setState({ submissionStatus: "This email already exists on our website " })
             case "Failed":
                 return this.setState({ submissionStatus: "Failed to register a user, try again later" })
             case "Password Length":
-                return this.setState({ submissionStatus: "Password must be at least 6 characters in length" })
+                return this.setState({ submissionStatus: "Password must be at least 6 characters in long" })
             case "Uppercase Letter":
-                return this.setState({submissionStatus: "Password must start with an uppercase letter"})
+                return this.setState({submissionStatus: "Password must begin with an uppercase letter"})
             case "Same Password Entered":
                 return this.setState({submissionStatus: "Password's do not match"})
-            case "success":
-                return this.setState({submissionStatus: "Check your email for email verification link"})
             default:
                 return this.setState({ submissionStatus: "Something went wrong" })
         }
-    }
-
-    clearFormInputs = () => {
-        document.getElementById("Name").value = "";
-        document.getElementById("email-address").value = "";
-        document.getElementById("password").value = "";
-        document.getElementById("conf-password").value = "";
-
     }
 
     // Send a request to server and pass parameters in body to it
@@ -74,8 +64,7 @@ class Register extends React.Component {
             .then(user => {
                 if (user.id) {
                     this.props.loadUser(user);
-                    this.onSubmitStatus("success")
-                    this.clearFormInputs();
+                    this.props.onRouteChange("verify")
                 } else {
                     this.onSubmitStatus(user)
                 }

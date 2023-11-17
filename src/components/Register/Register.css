@@ -116,4 +116,6 @@
 }
 .register-error-msg{
   font-size: small;
+  text-align: center;
+  width: 80%;
 }

@@ -123,3 +123,8 @@
   color: blue;
   text-decoration: underline;
 }
+
+.validation-link-disabled {
+  color: blue;
+  cursor: not-allowed;
+}
