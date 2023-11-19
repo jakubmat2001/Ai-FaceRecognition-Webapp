@@ -72,9 +72,7 @@ class Signin extends React.Component {
             })
         }).then(res => res.json())
           .then(data => {
-            console.log(data)
             if (data == "Verification sent"){
-                console.log("if triggered")
                 this.onSubmitStatus(data)
             }
           })

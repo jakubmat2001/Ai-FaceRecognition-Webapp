@@ -99,7 +99,7 @@ class Delete extends React.Component {
                     <div className="disclaimer-label-container">
                         <p className="disclaimer-account-label">Disclaimer</p>
                     </div>
-                    <p className="delete-disclaimer-text">By deleting your account, you will erase all your data from our database including any past entry streaks you had. This is <b>permanent</b> and you will be able to create a new account with the same e-mail you're using for this account if you wish. </p>
+                    <p className="delete-disclaimer-text">By deleting your account, you will erase all your data from our database including any past entry streaks you had. This is <b>permanent</b> and you will be able to create a new account with the same e-mail you're using for this account in the future. </p>
                 </div>
             </article>
         );

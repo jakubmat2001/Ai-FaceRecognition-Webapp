@@ -102,7 +102,7 @@ class Profile extends React.Component {
                                         id="name" placeholder={this.props.user.name} />
                                     <br />
                                     <label className="profile-form-label" htmlFor="profile-img">Profile Image</label>
-                                    <input onChange={this.onFormChange} className="profile-input-properties" type="file" name="profile-img"
+                                    <input onChange={this.onFormChange} className="profile-input-properties-img" type="file" name="profile-img"
                                         id="profile-img" />
                                 </div>
                             </fieldset>
