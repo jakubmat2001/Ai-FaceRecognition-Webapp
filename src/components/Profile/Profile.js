@@ -34,7 +34,6 @@ class Profile extends React.Component {
         formData.append("name", data.name);
         if (data.profileImg && data.profileImg instanceof File) {
             formData.append("image", data.profileImg);
-            console.log(`data in image ${data.profileImg}`)
         }
         const token = window.sessionStorage.getItem("token");
         fetch(`http://localhost:3001/profile/${this.props.user.id}`, {

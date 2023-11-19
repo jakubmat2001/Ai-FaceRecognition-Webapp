@@ -230,7 +230,6 @@ class App extends Component {
                 {this.state.isProfileOpen &&
                     <Modal>
                         <Profile isProfileOpen={this.state.isProfileOpen} user={this.state.userProfile} toggleModal={this.toggleModal} loadUser={this.loadUser} defaultProfileImg={defaultProfileIcon}/>
-                        {console.log(this.state.isProfileOpen)}
                     </Modal>
                 }
                 <Navigation onRouteChange={this.onRouteChange} isSigned={this.state.isSigned} toggleModal={this.toggleModal} userProfileImg={this.state.userProfile.profileImg} defaultProfileImg={defaultProfileIcon}/>

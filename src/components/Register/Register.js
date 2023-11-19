@@ -38,7 +38,7 @@ class Register extends React.Component {
             case "Failed":
                 return this.setState({ submissionStatus: "Failed to register a user, try again later" })
             case "Password Length":
-                return this.setState({ submissionStatus: "Password must be at least 6 characters in long" })
+                return this.setState({ submissionStatus: "Password must be at least 6 characters long" })
             case "Uppercase Letter":
                 return this.setState({submissionStatus: "Password must begin with an uppercase letter"})
             case "Same Password Entered":
