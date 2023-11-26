@@ -8,7 +8,7 @@ const Verification = ({ email }) => {
                 <p className="verification-text-1">(Email Verification Link Sent To)</p>
             </div>
             <div className="text-2-container">
-                <p className="verification-text-2">{email}</p>
+                <p className="verification-text-2"><b>{email}</b></p>
             </div>
         </div>
     )

@@ -47,7 +47,7 @@ class Delete extends React.Component {
 
     onSubmitDeleteAccount = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3001/delete", {
+        fetch("https://13.41.66.124:3001/delete", {
             method: "delete",
             headers: {
                 "Content-Type": "application/json",

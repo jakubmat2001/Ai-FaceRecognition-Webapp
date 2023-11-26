@@ -4,8 +4,6 @@ import './Rank.css'
 const Rank = ({name, entries, error}) => {
     const [emoji, setEmoji] = useState('')
 
-
-
     useEffect(() => {
         getRankEmoji(entries);
     }, [entries])

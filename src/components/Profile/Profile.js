@@ -36,7 +36,7 @@ class Profile extends React.Component {
             formData.append("image", data.profileImg);
         }
         const token = window.sessionStorage.getItem("token");
-        fetch(`http://localhost:3001/profile/${this.props.user.id}`, {
+        fetch(`https://13.41.66.124:3001/${this.props.user.id}`, {
             method: "post",
             headers: {
                 "Authorization": token
