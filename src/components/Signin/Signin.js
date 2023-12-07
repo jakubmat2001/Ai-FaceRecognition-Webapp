@@ -64,7 +64,7 @@ class Signin extends React.Component {
             this.setState({ isLinkDisabled: false }); 
         }, 60000);
 
-        fetch("https://13.41.66.124:3001/resend-verification", {
+        fetch("http://localhost:3001/resend-verification", {
             method: "post",
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify({
@@ -85,7 +85,7 @@ class Signin extends React.Component {
     // Send a post request to server to check if credentials match
     // If they do, sign in the user to their account
     onSubmitSignIn = () => {
-        fetch("https://13.41.66.124:3001/signin", {
+        fetch("http://localhost:3001/signin", {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -97,7 +97,7 @@ class Signin extends React.Component {
             .then(data => {
                 if (data.userID && data.success === "true") {
                     this.saveSessionInWindowStorage(data.token)
-                    fetch(`https://13.41.66.124:3001/${data.userID}`, {
+                    fetch(`http://localhost:3001/profile/${data.userID}`, {
                         method: "get",
                         headers: {
                             "Content-Type": "application/json",

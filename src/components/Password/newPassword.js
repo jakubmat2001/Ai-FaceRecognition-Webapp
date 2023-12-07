@@ -48,7 +48,7 @@ class Password extends React.Component {
 
     onSubmitChangePassword = (event) => {
         event.preventDefault();
-        fetch("https://13.41.66.124:3001/password", {
+        fetch("http://localhost:3001/password", {
             method: "put",
             headers: {
                 "Content-Type": "application/json",

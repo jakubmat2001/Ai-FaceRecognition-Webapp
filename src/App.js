@@ -45,7 +45,7 @@ class App extends Component {
     componentDidMount() {
         const token = window.sessionStorage.getItem('token');
         if (token) {
-            fetch("https://13.41.66.124:3001/signin", {
+            fetch("http://localhost:3001/signin", {
                 method: "post",
                 headers: {
                     "Content-Type": "application/json",
@@ -55,7 +55,7 @@ class App extends Component {
                 .then(resp => resp.json())
                 .then(data => {
                     if (data && data.id) {
-                        fetch(`https://13.41.66.124:3001/${data.id}`, {
+                        fetch(`http://localhost:3001/profile/${data.id}`, {
                             method: "get",
                             headers: {
                                 "Content-Type": "application/json",
@@ -136,7 +136,7 @@ class App extends Component {
 
         // Fetching prediction made on the image
         // This will then run calculate postion of our Box on that image
-        fetch("https://13.41.66.124:3001/imageurl", {
+        fetch("http://localhost:3001/imageurl", {
             method: "post",
             headers: {
                 "Content-Type": "application/json",
@@ -150,7 +150,7 @@ class App extends Component {
             .then(result => {
                 if (result !== "Failed to work with API." && result.status.code !== 30002) {
                     this.showFaceBox(this.calculateBoxPosition(result))
-                    fetch("https://13.41.66.124:3001/image", {
+                    fetch("http://localhost:3001/image", {
                         method: "put",
                         headers: {
                             "Content-Type": "application/json",
