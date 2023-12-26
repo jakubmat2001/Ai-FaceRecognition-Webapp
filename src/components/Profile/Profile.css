@@ -11,10 +11,10 @@
     justify-content: center;
 }
 
-.profile-img-modal { 
+.profile-img-modal {
     border-radius: 50%;
     width: 60px;
-    height: 50px;
+    height: 45px;
     border: solid black 1px;
     object-fit: cover;
     margin: auto;
@@ -25,11 +25,10 @@
     border: 1px solid darkgray;
     margin-top: 2rem;
     width: 30%;
-    height: 80%;
+    height: auto;
     margin: auto;
     background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.5);
-
 }
 
 .profile-main-html {
@@ -41,17 +40,6 @@
     max-width: 30em;
     margin-left: auto;
     margin-right: auto;
-}
-
-.profile-form-grouping {
-    border-style: solid;
-    border-width: 0;
-    border-color: transparent;
-    padding-left: 0;
-    padding-bottom: 1rem;
-    padding-right: 0;
-    margin-left: 0;
-    margin-right: 0;
 }
 
 .top-profile-container {
@@ -71,67 +59,123 @@
 
 .profile-exit {
     width: 50px;
-    height:100%;
+    height: 100%;
     margin: auto;
     cursor: pointer;
 }
 
-.profile-form-div {
-    margin-top: 0.75rem;
-}
-
-.profile-form-label {
-    display: block;
-    padding-top: 1rem;
-    font-weight: 600;
-    line-height: 1.5;
-    font-size: 0.875rem;
-}
-
-.profile-input-properties {
-    padding: 0.6rem;
-    border: 1px solid;
-    border-color: grey;
-    background-color: transparent;
-}
-
-/* shorter way of setting width for individual input field */
-.profile-input-properties {
-    width: 100%;
-}
-
-.profile-input-properties-img{
-    width: 100%;
-    padding-top: 5px;
-}
-
-.save-changes {
-    float: left;
-    border: 1px solid gray;
-}
-
-.save-changes:hover{
-    background-color: grey;
-    color: white;
-}
-
-.cancel-changes {
-    float: right;
-    border: 1px solid grey;
-}
-
-.cancel-changes:hover{
-    background-color: rgb(222, 106, 106);
-    color: white;
-}
-
-.second-horizontal-row{
+#second-hr {
     margin-bottom: 0;
 }
 
-.modify-options-container{
-    padding: 2rem;
+/* Input Section */
+.profile-input-updates-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
 }
+
+.profile-input-update-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.profile-input-update-container.name {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.profile-input-label {
+    font-weight: 600;
+    padding-bottom: 7px;
+}
+
+.profile-name-input-box {
+    padding: 5px;
+    border: 1px solid;
+    border-radius: 4px;
+    outline: none;
+    color: dimgray;
+}
+
+
+.profile-file-upload {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed black;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.profile-file-upload .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-file-upload .icon svg {
+    height: 80px;
+    fill: black;
+}
+
+.profile-file-upload .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-file-upload .text span {
+    color: black;
+}
+
+.profile-file-upload input {
+    display: none;
+}
+
+/* Bottom Section */
+.modify-options-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 3rem 0 0 0;
+}
+
+.profile-update-button {
+    width: 100%;
+    padding: 1rem 1rem;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.profile-update-button:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.profile-update-button savechanges:active {
+    transform: translateY(-1px);
+}
+
 
 @media only screen and (min-width: 0px) {
     .profile-article-html {
@@ -141,7 +185,7 @@
 
 @media only screen and (min-width: 300px) {
     .profile-article-html {
-        width: 75%;
+        width: 80%;
     }
 }
 

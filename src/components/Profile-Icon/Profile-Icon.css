@@ -3,6 +3,7 @@
     width: 53px;
     height: 53px;
     border: solid black 1px;
+    cursor: pointer;
     object-fit: cover;
 }
 
