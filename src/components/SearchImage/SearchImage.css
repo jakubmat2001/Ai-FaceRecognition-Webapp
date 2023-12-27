@@ -33,12 +33,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 .form-button span {
   display: inline-block;
-  position: relative;
+  position: absolute;
   transition: 0.5s;
+  z-index: 1;
 }
 
 .form-button span:after {

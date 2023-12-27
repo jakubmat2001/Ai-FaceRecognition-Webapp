@@ -4,7 +4,6 @@ import Rank from './components/Rank/Rank';
 import ImageLoad from './components/ImageLoad/ImageLoad';
 import Signin from './components/Signin/Signin';
 import Register from './components/Register/Register';
-import Account from './components/Account/Account';
 import Password from './components/Password/newPassword';
 import Delete from './components/Delete/deleteUser';
 import Profile from './components/Profile/Profile';
@@ -15,6 +14,7 @@ import { Component } from "react";
 import { backgroundOptions, particlesInit } from './particlesOptions';
 import defaultProfileIcon from "./img/defaultProfileIcon.png";
 import defaultFaceImage from "./img/defaultFaceImage.png";
+import './App.css'
 
 
 const userInitialState = {
@@ -129,7 +129,6 @@ class App extends Component {
         })
     }
 
-    // https://rocky-mountain-27857-bc14d0ed0a0a.herokuapp.com/
     onButtonSubmit = () => {
         const token = window.sessionStorage.getItem('token');
         this.setState({ imageURL: this.state.imageFormInput })
@@ -194,8 +193,6 @@ class App extends Component {
                         <ImageLoad box={this.state.box} imageURL={this.state.imageURL} />
                     </div>
                 );
-            case "account":
-                return <Account onRouteChange={this.onRouteChange} isSigned={this.state.isSigned} />;
             case "password":
                 return <Password onRouteChange={this.onRouteChange} email={this.state.userProfile.email} />;
             case "delete":
@@ -215,24 +212,24 @@ class App extends Component {
         this.setState(prevState => ({
             isProfileOpen: !prevState.isProfileOpen
         }))
-
     }
 
     // Display appropriate components based on current page/root they're on
     render() {
+        const {route, userProfile, isProfileOpen, isSigned} = this.state
         return (
-            <div className='App'>
+            <div className={route === "signin" || route === "register" || route === "signout" ? "app-default" : "app-signed"}>
                 <Particles
                     id='tsparticles'
                     init={particlesInit}
                     options={backgroundOptions}
                 />
-                {this.state.isProfileOpen &&
+                {isProfileOpen &&
                     <Modal>
-                        <Profile isProfileOpen={this.state.isProfileOpen} user={this.state.userProfile} toggleModal={this.toggleModal} loadUser={this.loadUser} defaultProfileImg={defaultProfileIcon}/>
+                        <Profile isProfileOpen={isProfileOpen} user={userProfile} toggleModal={this.toggleModal} loadUser={this.loadUser} defaultProfileImg={defaultProfileIcon}/>
                     </Modal>
                 }
-                <Navigation onRouteChange={this.onRouteChange} isSigned={this.state.isSigned} toggleModal={this.toggleModal} userProfileImg={this.state.userProfile.profileImg} defaultProfileImg={defaultProfileIcon}/>
+                <Navigation onRouteChange={this.onRouteChange} isSigned={isSigned} toggleModal={this.toggleModal} userProfileImg={userProfile.profileImg} defaultProfileImg={defaultProfileIcon} userName={userProfile.name} userEmail={userProfile.email}/>
                 {this.pageRouting()}
             </div>
         );

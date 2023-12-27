@@ -80,13 +80,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 2rem;
-}
-
-.profile-input-update-container.name {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: 2rem;
 }
 
@@ -116,6 +111,7 @@
     border: 2px dashed black;
     background-color: white;
     border-radius: 10px;
+    padding: 5px 0px;
 }
 
 .profile-file-upload .icon {
@@ -125,7 +121,7 @@
 }
 
 .profile-file-upload .icon svg {
-    height: 80px;
+    height: 50px;
     fill: black;
 }
 
@@ -133,6 +129,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 14px;
 }
 
 .profile-file-upload .text span {

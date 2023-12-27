@@ -1,46 +1,92 @@
 import React from "react";
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import userIcon from "./Profile-Icon-Images/user.png"
+import keyIcon from "./Profile-Icon-Images/key.png"
+import closeIcon from "./Profile-Icon-Images/close.png"
+import logoutIcon from "./Profile-Icon-Images/logout.png"
 import './Profile-Icon.css'
 
 class ProfileIcon extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.toggle = this.toggle.bind(this);
         this.state = {
-            DropDownOpen: false,
-            profileImg: this.props.userProfileImg 
-        }
+            dropDownOpen: false,
+            profileImg: this.props.userProfileImg,
+            fontSize: ""
+        };
     }
 
-    // Sinding our drop-down profile
+    componentDidMount = () => {
+        const {userEmail} = this.props;
+        this.modifyEmailLenght(userEmail)
+    }
+
+    // Toggling the drop-down profile
     toggle() {
-        this.setState(prevState => ({
-            DropDownOpen: !prevState.DropDownOpen
+        this.setState((prevState) => ({
+            dropDownOpen: !prevState.dropDownOpen
         }));
     }
 
+    modifyEmailLenght = (email) => {
+        if (email.length > 24 && email.length <= 32){
+             this.setState((prevState) => 
+             ({...prevState,
+                fontSize: "10px"}))
+             return
+        }else if (email.length <= 24){
+            this.setState((prevState) => 
+            ({...prevState,
+               fontSize: "14px"}))
+             return
+        }
+        else {
+            this.setState((prevState) => 
+            ({...prevState,
+               fontSize: "0px"}))
+             return
+        }
+    }
+
     render() {
-        // Set the profile image to default user image
-        let { profileImg } = this.state
-        if (profileImg === null || profileImg === undefined){
+        const { profileImg, dropDownOpen, fontSize} = this.state;
+        const {userEmail, userName, toggleModal, onRouteChange} = this.props
+        if (profileImg === null || profileImg === undefined) {
             profileImg = this.props.defaultProfileImg;
         }
+
         return (
-            <div className="drop-down-profile">
-                <Dropdown isOpen={this.state.DropDownOpen} toggle={this.toggle} className="drop-down-list">
-                    <DropdownToggle data-toggle="dropdown" tag="span">
-                        <img className="profile-img" src={profileImg} alt="profile-Icon" />
-                    </DropdownToggle>
-                    <DropdownMenu>
-                        <DropdownItem onClick={this.props.toggleModal}> View Profile </DropdownItem>
-                        <DropdownItem onClick={() => this.props.onRouteChange("password")}>  Change Password </DropdownItem>
-                        <DropdownItem onClick={() => this.props.onRouteChange("delete")}> Delete Account </DropdownItem>
-                        <DropdownItem onClick={() => this.props.onRouteChange("signout")}> Sign-Out </DropdownItem>
-                    </DropdownMenu>
-                </Dropdown>
+            <div className="action">
+                <div className="profile" onClick={this.toggle}>
+                    <img src={profileImg} alt="Profile" />
+                </div>
+                {dropDownOpen && 
+                    <div className="menu active">
+                        <h3>{userName}<br/><span style={{fontSize: fontSize}}>{userEmail}</span></h3>
+                        <ul>
+                            <li>
+                                <img src={userIcon} alt="profile"/>
+                                <a href="#" onClick={() => toggleModal()}>My Profile</a>
+                            </li>
+                            <li>
+                                <img src={keyIcon} alt="change password"/>
+                                <a href=".#" onClick={() => onRouteChange("password")}>Change Password</a>
+                            </li>
+                            <li>
+                                <img src={closeIcon} alt="delete account"/>
+                                <a href=".#" onClick={() => onRouteChange("delete")}>Delete Account</a>
+                            </li>
+                            <li>
+                                <img src={logoutIcon} alt="signout"/>
+                                <a href=".#" onClick={() => onRouteChange("signout")}>Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                }
             </div>
-        )
+        );
     }
 }
 
-export default ProfileIcon
+export default ProfileIcon;
+

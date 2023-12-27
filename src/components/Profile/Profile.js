@@ -98,12 +98,12 @@ class Profile extends React.Component {
                             <hr id="second-hr" />
                             <section className="profile-input-updates-section">
 
-                                <div className="profile-input-update-container name">
+                                <div className="profile-input-update-container">
                                     <label className="profile-input-label" for="profile-name-input-box">Profile Name</label>
                                     <input type="text" className="profile-name-input-box" name="name" onChange={this.onFormChange}></input>
                                 </div>
 
-                                <div className="profile-input-update-container image">
+                                <div className="profile-input-update-container">
                                     <label className="profile-input-label">Profile Image</label>
                                     <label for="file" className="profile-file-upload">
                                         <div className="icon">

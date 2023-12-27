@@ -1,0 +1,13 @@
+.app-signed {
+    height: 100vh ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 120px;;
+}
+
+.app-default {
+    height: 100vh ;
+    display: flex;
+    flex-direction: column;
+}

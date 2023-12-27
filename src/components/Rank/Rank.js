@@ -18,7 +18,7 @@ const Rank = ({name, entries, error}) => {
     }
 
     return(
-        <div>
+        <div className="rank-container">
             <div className="rank-txt">
                 {`${name} your rank is... `}
             </div>
