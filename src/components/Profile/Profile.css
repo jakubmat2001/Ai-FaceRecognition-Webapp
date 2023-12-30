@@ -101,7 +101,7 @@
 
 .profile-file-upload {
     height: auto;
-    width: 100%;
+    width: 55%;
     display: flex;
     flex-direction: column;
     align-items: space-between;
@@ -178,11 +178,19 @@
     .profile-article-html {
         width: 90%;
     }
+
+    .profile-file-upload {
+        width: 80%;
+    }
 }
 
 @media only screen and (min-width: 300px) {
     .profile-article-html {
-        width: 80%;
+        width: 75%;
+    }
+
+    .profile-file-upload {
+        width: 100%;
     }
 }
 
@@ -190,16 +198,28 @@
     .profile-article-html {
         width: 50%;
     }
+
+    .profile-file-upload {
+        width: 65%;
+    }
 }
 
 @media only screen and (min-width: 900px) {
     .profile-article-html {
         width: 40%;
     }
+
+    .profile-file-upload {
+        width: 60%;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
     .profile-article-html {
         width: 30%;
+    }
+
+    .profile-file-upload {
+        width: 55%;
     }
 }

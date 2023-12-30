@@ -6,7 +6,7 @@ html {
 
 body {
   margin: 0;
-  font-family: Verdana,sans-serif ;
+  font-family: Montserrat, sans-serif, Verdana ;
   background: linear-gradient(180deg, #33446655, #9198e5);
   background-attachment: fixed; 
   -webkit-font-smoothing: antialiased;
