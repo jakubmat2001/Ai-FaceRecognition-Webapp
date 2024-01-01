@@ -7,7 +7,8 @@ import Register from './components/Register/Register';
 import Password from './components/Password/newPassword';
 import Delete from './components/Delete/deleteUser';
 import Profile from './components/Profile/Profile';
-import Modal from './components/Modal/Modal'
+import Modal from './components/Modal/Modal';
+import ScoreBoard from './components/ScoreBoard/scoreBoard';
 import Verification from './components/Verification/Verification';
 import Particles from "react-particles";
 import { Component } from "react";
@@ -188,7 +189,7 @@ class App extends Component {
             case "home":
                 return (
                     <div>
-                        <Rank name={this.state.userProfile.name} entries={this.state.userProfile.entries} error={this.state.error}/>
+                        <Rank onRouteChange={this.onRouteChange} name={this.state.userProfile.name} entries={this.state.userProfile.entries} error={this.state.error}/>
                         <SearchImage onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} />
                         <ImageLoad box={this.state.box} imageURL={this.state.imageURL} />
                     </div>
@@ -201,6 +202,8 @@ class App extends Component {
                 return <Signin onRouteChange={this.onRouteChange} loadUser={this.loadUser} defaultProfileImg={this.state.userProfile.profileImg} />;
             case "register":
                 return <Register onRouteChange={this.onRouteChange} loadUser={this.loadUser} />;
+            case "score":
+                return <ScoreBoard />
             case "verify":
                 return <Verification email={this.state.userProfile.email} />;
             default:

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './Rank.css'
 
-const Rank = ({name, entries, error}) => {
+const Rank = ({name, entries, error, onRouteChange}) => {
     const [emoji, setEmoji] = useState('')
 
     useEffect(() => {
@@ -24,6 +24,10 @@ const Rank = ({name, entries, error}) => {
             </div>
             <div className="rank-Position">
                 {`${entries} ${emoji}`}
+            </div>
+            <div className="rank-scoreboard">
+                <p>View how your score matches against others</p>
+                <a id="rank-scoreboard-navigate" onClick={() => onRouteChange("score")}><p>Score Board</p></a>
             </div>
             <div className="error-box">
                 {`${error}`}

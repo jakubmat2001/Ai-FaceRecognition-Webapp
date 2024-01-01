@@ -5,11 +5,8 @@ import "./SearchImage.css";
 const SearchImage = ({ onInputChange, onButtonSubmit }) => {
     return (
         <div className="component">
-            <p className="info-text">
-                {"Insert URL of an image into input box below."}
-            </p>
             <div className="form-container">
-                <input className='form-input' type="text" placeholder="https://www.images.com/coupleOnAScooter.jpeg" onChange={onInputChange} />
+                <input className='form-input' type="text" placeholder="Insert a URL image into this search box" onChange={onInputChange} />
                 <button className="form-button" onClick={onButtonSubmit}>
                     <div class="svg-wrapper-1">
                         <div class="svg-wrapper">

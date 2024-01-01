@@ -1,0 +1,6 @@
+.score-board-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin: 120px auto auto;
+}

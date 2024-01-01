@@ -1,5 +1,9 @@
 .rank-container {
   margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .rank-txt{
@@ -11,9 +15,24 @@
     text-align: center;
 }
 
+.rank-scoreboard{
+  padding-top: 1rem;
+}
+
+.rank-scoreboard p {
+  margin: 0;
+}
+
 .error-box {
   padding-top: 1em;
   text-align: center;
+}
+
+#rank-scoreboard-navigate {
+  text-align: center;
+  text-decoration: underline;
+  cursor: pointer;
+
 }
 
 @media only screen and (max-width: 600px) {
