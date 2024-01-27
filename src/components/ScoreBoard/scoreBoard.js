@@ -3,7 +3,13 @@ import { useEffect, useState } from "react";
 import "./scoreBoard.css"
 
 const ScoreBoard = () => {
-    const [userData, setUserData] = useState([]);
+    const [userRank, setUserRank] = useState([
+    { 1: "jack",  score: ""},
+    { 2: "ben",  score: ""},
+    { 3: "hugo",  score: ""},
+    { 4: "vlad",  score: ""},
+    { 5: "karol",  score: ""},
+]);
 
     // Get all the users from our db, put them in unsorted array
     // check each of their score against each other, and then remove highest scored user from unsorted array
@@ -11,16 +17,26 @@ const ScoreBoard = () => {
     // then repeat that 5 more times to fill up top 5 rows in the table
     useEffect(() => {
         const token = window.sessionStorage.getItem('token');
-        fetch("http//:localhost:3001", {
+        fetch("http://localhost:3001/score", {
             method: "get",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": token
             }
         })
-        .then(data => data.json())
-    }, [])
+        .then(response => response.json())
+        .then(users => {
+            if (users){
+                filterUsersScore(users)
+            }
+        })
+        .catch(error => console.error('Error fetching users:', error));
+    }, []);
 
+    const filterUsersScore = () => {
+        const unfilteredScore = []
+        
+    }
 
     return (
         <div className="score-board-container">
