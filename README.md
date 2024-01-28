@@ -1,4 +1,4 @@
-# Ai-FaceRecognition-Frontend
+# Ai-FaceRecognition-Webapp
 
 A Face recognition web-hosted application allows users to paste the URL of a randomly found image on the web and detect faces on it (if any are found) while unlocking new emojis based on the number of images submitted.
 To use it users will need to first register and verify their accounts via the verification link sent to their specified email, with sessions implemented users will be logged in for an hour or until they log off.
