@@ -49,16 +49,16 @@ class ProfileIcon extends React.Component {
     }
 
     render() {
-        const { profileImg, dropDownOpen, fontSize} = this.state;
+        const {dropDownOpen, fontSize} = this.state;
         const {userEmail, userName, toggleModal, onRouteChange} = this.props
-        if (profileImg === null || profileImg === undefined) {
-            profileImg = this.props.defaultProfileImg;
+        if (this.state.profileImg === null || this.state.profileImg === undefined) {
+            this.state.profileImg = this.props.defaultProfileImg;
         }
 
         return (
             <div className="action">
                 <div className="profile" onClick={this.toggle}>
-                    <img src={profileImg} alt="Profile" />
+                    <img src={this.state.profileImg} alt="Profile" />
                 </div>
                 {dropDownOpen && 
                     <div className="menu active">
