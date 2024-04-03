@@ -218,7 +218,7 @@ class App extends Component {
     render() {
         const {route, userProfile, isProfileOpen, isSigned} = this.state
         return (
-            <div className={route === "signin" || route === "register" || route === "signout" ? "app-default" : "app-signed"}>
+            <div className={route === "signin" || route === "register" || route === "signout" || route === "verify" ? "app-default" : "app-signed"}>
                 <Particles
                     id='tsparticles'
                     init={particlesInit}
