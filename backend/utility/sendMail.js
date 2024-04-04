@@ -17,7 +17,7 @@ const sendVerificationEmail = (name, email, token) => {
         from: process.env.EMAIL_USER,
         to: email,
         subject: 'Email Verification',
-        html: `<p>Hey <b>${name}</b> you can signin after clicking the link below.</p></br>
+        html: `<p>Hey <b>${name}</b> please click the link below to verify your email.</p></br>
         <p>Click <a href="http://localhost:3001/verify-email?token=${token}">here</a> to verify your email.</p>`
     };
 
